@@ -93,7 +93,10 @@ alias gd='git diff'
 
 # configuration management
 # See: https://news.ycombinator.com/item?id=11070797
-alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # opam configuration
 test -r /Users/dimtion/.opam/opam-init/init.zsh && . /Users/dimtion/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

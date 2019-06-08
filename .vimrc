@@ -1,7 +1,9 @@
 " Vim rc file
 " Reload it: `:so %`
-" update the plugins: `:VundleInstall`
+" update the plugins: `:PlugInstall`
 "
+
+set nocompatible
 
 " At the start I've disabled the arrows to get used to hjkl
 " I don't need such help now
@@ -11,32 +13,46 @@ noremap <Left> <Nop>
 " noremap <Up> <Nop>
 
 " Plugins configuration
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'  
-" Plugin 'chriskempson/base16-vim'                                                                                       
-" Plugin 'scrooloose/nerdtree'                                                                                           
-" Plugin 'Xuyuanp/nerdtree-git-plugin'                                                                                   
-Plugin 'airblade/vim-gitgutter'                                                                                        
-" Plugin 'yuttie/comfortable-motion.vim'                                                                                 
-Plugin 'w0rp/ale'                                                                                                      
-Plugin 'valloric/YouCompleteMe'
-Plugin 'posva/vim-vue'                                                                                                 
-" Plugin 'leafgarland/typescript-vim'
-Plugin 'tpope/vim-fugitive' 
-Plugin 'editorconfig/editorconfig-vim'                                                                                 
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-obsession'
-Plugin 'junegunn/vim-easy-align'
+" Auto installation of plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Plugin 'elixir-editors/vim-elixir'
-" Plugin 'rust-lang/rust.vim'
+call plug#begin('~/.vim/plugged')
+Plug 'VundleVim/Vundle.vim'
+Plug 'airblade/vim-gitgutter'
 
-call vundle#end()
-filetype plugin indent on
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'w0rp/ale'
+Plug 'valloric/YouCompleteMe'
+" Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
+" Sometime the syntax highlight bugs: `:syntax sync fromstart`
+Plug 'posva/vim-vue' "
+Plug 'tpope/vim-fugitive'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-obsession'
+Plug 'junegunn/vim-easy-align'
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+Plug 'easymotion/vim-easymotion'
+
+" Plug 'yuttie/comfortable-motion.vim'
+" Plug 'chriskempson/base16-vim'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'rust-lang/rust.vim'
+call plug#end()
 
 " Splitsmovement
 nnoremap  
@@ -71,5 +87,47 @@ set wildmenu
 " spell error color
 " To activate spelling: setlocal spell spelllang=fr
 highlight SpellBad ctermfg=009 ctermbg=011 guifg=#ff0000 guibg=#ffff00
+
+"
+" Plugins configuration
+"
+
+"" Coc specific configuration
+" set updatetime=300
+
+"" YouCompleteMe
+" Disable <tab> since I don't like it and it interferes with UltraSnip
+let g:ycm_key_list_select_completion = ['<Down>']
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+"" NERDCommenter
+let g:NERDSpaceDelims = 1
+let g:NERDCommentEmptyLines = 1
+
+"" Vim easy motion
+let g:EasyMotion_smartcase = 1
+
+" Quickly move to a position
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+
+"" Ultrasnip
+" Disable ultraSnip since we are using YouCompleteMe
+inoremap <c-x><c-k> <c-x><c-k>
+
+"
+" Custom commands
+"
+
+command Config :vsplit ~/.vimrc
+
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+command StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
+
 
 " vim: set ft=vim :
