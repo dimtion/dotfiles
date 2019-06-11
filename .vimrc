@@ -109,7 +109,7 @@ let g:EasyMotion_smartcase = 1
 
 " Quickly move to a position
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
 
 "" Ultrasnip
 " Disable ultraSnip since we are using YouCompleteMe
