@@ -1,9 +1,14 @@
 " Dimtion's .vimrc file
 " Reload it: `:so %`
-" update the plugins: `:PlugInstall`
+" Update the plugins: `:PlugInstall`
 "
+" Some tips from the reddit wiki page .vimrc checklist:
+" https://www.reddit.com/r/vim/wiki/vimrctips
 
-set nocompatible
+" Nocompatible is useless since it is automatically set by Vim when it finds
+" a .vimrc file. It may also override some necessary settings.
+" set nocompatible
+
 
 " Plugins configuration
 
@@ -39,6 +44,7 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 Plug 'easymotion/vim-easymotion'
+Plug 'junegunn/goyo.vim'
 
 " No longer used plugings
 " Plug 'yuttie/comfortable-motion.vim'
@@ -71,6 +77,8 @@ nnoremap  
 set splitbelow
 set splitright
 
+nnoremap <c-t> :tabnew<cr>
+
 " Search
 set hlsearch
 set ignorecase
@@ -86,6 +94,7 @@ nmap s <Plug>(easymotion-overwin-f2)
 " FZF
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Rg<cr>
+
 
 ""
 "" Edition
@@ -146,7 +155,14 @@ set wildmenu
 
 " spell error color
 " To activate spelling: setlocal spell spelllang=fr
+" TODO: Follow best practices from:
+" https://gist.github.com/romainl/379904f91fa40533175dfaec4c833f2f
 highlight SpellBad ctermfg=009 ctermbg=011 guifg=#ff0000 guibg=#ffff00
+
+" Goyo settings (distraction free plugin)
+let g:goyo_width=120
+let g:goyo_height="95%"
+nmap <leader>g :Goyo<CR>
 
 "
 " Custom commands
