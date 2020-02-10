@@ -80,6 +80,9 @@ Plug 'chriskempson/base16-vim'
 Plug 'kshenoy/vim-signature'
 
 
+" Org mode
+Plug 'jceb/vim-orgmode'
+
 " No longer used plugings
 " Plug 'junegunn/vim-easy-align'
 " Plug 'yuttie/comfortable-motion.vim'
