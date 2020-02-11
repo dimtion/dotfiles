@@ -22,7 +22,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
 
 " Replaced my old friend gitgutter by signify which works much better.
 " Some shortcuts:
@@ -37,14 +36,18 @@ Plug 'mbbill/undotree'
 
 " Using ALE+YouCompleteMe for linting, formating and code completion and
 " navigation
-Plug 'w0rp/ale'
-Plug 'valloric/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"
+" Trying coc
+" Plug 'w0rp/ale'
+" Plug 'valloric/YouCompleteMe'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 " I find coc slow and does not work as well as YCM+ale so I disable it for
 " now.
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'fannheyward/coc-rust-analyzer'
 
 " Very useful for group projects without a formater
 " See: https://editorconfig.org/
@@ -168,8 +171,37 @@ let g:NERDCommentEmptyLines = 1
 inoremap <c-x><c-k> <c-x><c-k>
 
 "" ALE
-nmap <leader>f <Plug>(ale_fix)
-nmap <leader>a <Plug>(ale_toggle_buffer)
+" nmap <leader>f <Plug>(ale_fix)
+" nmap <leader>a <Plug>(ale_toggle_buffer)
+
+"" Coc
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 "" Undotree
 nnoremap <leader>u :UndotreeToggle<cr>:UndotreeFocus<cr>
