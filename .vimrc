@@ -86,10 +86,16 @@ Plug 'kshenoy/vim-signature'
 " Org mode
 Plug 'jceb/vim-orgmode'
 
+" Better surround.vim
+" Add: `sa{motion/textobject}{addition}`
+" Delete: `sd{deletion}`
+" Replate: `srb{addition}`
+Plug 'machakann/vim-sandwich'
+
+
 " No longer used plugings
 " Plug 'junegunn/vim-easy-align'
 " Plug 'yuttie/comfortable-motion.vim'
-" Plug 'chriskempson/base16-vim'
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'leafgarland/typescript-vim'
@@ -153,6 +159,10 @@ set smartcase
 set smarttab
 set expandtab
 " set autoindent
+
+" Do not change the endofline if there is an issue
+set nofixendofline
+
 
 " shortcut for paste mode
 nnoremap <leader>p :set invpaste paste?<CR>
@@ -221,7 +231,7 @@ fun! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-command StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
+command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
 
 "" Coc specific configuration
 " set updatetime=300
@@ -239,25 +249,24 @@ vnoremap <space> :call NERDComment(0,"toggle")<CR>
 " let base16colorspace=256
 " set termguicolors
 " use 256 colors in Console mode if we think the terminal supports it
-if &term =~? 'mlterm\|xterm\|screen'
-  set t_Co=256
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-
-  let s:background = "09152b"
-
-  function! s:base16_customize() abort
-    call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
-  endfunction
-
-  augroup on_change_colorschema
-    autocmd!
-    autocmd ColorScheme * call s:base16_customize()
-  augroup END
-
-  colorscheme base16-oceanicnext
-endif
+" if &term =~? 'mlterm\|xterm\|screen'
+"   set t_Co=256
+"   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"   set termguicolors
+" 
+"   let s:background = "09152b"
+" 
+"   function! s:base16_customize() abort
+"     call Base16hi("MatchParen", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold,italic", "")
+"   endfunction
+" 
+"   augroup on_change_colorschema
+"     autocmd!
+"     autocmd ColorScheme * call s:base16_customize()
+"   augroup END
+" endif
+colorscheme base16-oceanicnext
 
 " Status bar
 set ruler
@@ -298,6 +307,6 @@ au BufNewFile,BufRead *.vue set filetype=vue.html
 "" Custom commands
 ""
 
-command Config :vsplit ~/.vimrc
+command! Config :vsplit ~/.vimrc
 
 " vim: set ft=vim :
