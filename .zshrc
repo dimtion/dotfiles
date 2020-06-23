@@ -68,8 +68,8 @@ export LANG=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export VISUAL='vim'
-export EDITOR='vim'
+export VISUAL='nvim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -88,8 +88,9 @@ export EDITOR='vim'
 #
 alias gs='git status'
 alias ga='git add -p'
-alias gc='git commit'
+alias gc='git commit -v'
 alias gd='git diff'
+alias gp='git push'
 
 # configuration management
 # See: https://news.ycombinator.com/item?id=11070797
@@ -98,5 +99,5 @@ alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # opam configuration
 test -r /Users/dimtion/.opam/opam-init/init.zsh && . /Users/dimtion/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!**/.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

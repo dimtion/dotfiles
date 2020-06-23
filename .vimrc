@@ -10,6 +10,12 @@
 " set nocompatible
 
 
+" Cheat sheet
+" Open fold: zo
+" Close fold: zc
+" Toggle fold: za
+" Open all folds; zO
+
 ""
 "" Plugins declaration
 ""
@@ -56,6 +62,12 @@ Plug 'editorconfig/editorconfig-vim'
 " vim-vue: Sometime the syntax highlight bugs: `:syntax sync fromstart`
 Plug 'posva/vim-vue'
 
+" JS, TS, TSX, JSX syntax
+Plug 'yuezk/vim-js'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'jparise/vim-graphql'
+
 " Git wrapper
 Plug 'tpope/vim-fugitive'
 
@@ -63,7 +75,7 @@ Plug 'tpope/vim-fugitive'
 " [count]<leader>c<space> Toggle comment
 " [count]<leader>cc Comment the current line
 " [count]<leader>cu Uncomment the current line
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-obsession'
 
 Plug 'junegunn/fzf'
@@ -90,7 +102,8 @@ Plug 'jceb/vim-orgmode'
 " Add: `sa{motion/textobject}{addition}`
 " Delete: `sd{deletion}`
 " Replate: `srb{addition}`
-Plug 'machakann/vim-sandwich'
+" Disabled since it conflicts with my mapping of easymotion
+" Plug 'machakann/vim-sandwich'
 
 
 " No longer used plugings
@@ -175,6 +188,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 "" NERDCommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCommentEmptyLines = 1
+let g:NERDDefaultAlign = 'left'
 
 "" Ultrasnip
 " Disable ultraSnip since we are using YouCompleteMe
@@ -213,6 +227,11 @@ function! s:show_documentation()
   endif
 endfunction
 
+"" Vista
+
+let g:vista_default_executive = 'coc'
+let g:vista_fzf_preview = ['right:50%']
+
 "" Undotree
 nnoremap <leader>u :UndotreeToggle<cr>:UndotreeFocus<cr>
 
@@ -234,7 +253,7 @@ endfun
 command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
 
 "" Coc specific configuration
-" set updatetime=300
+set updatetime=300
 
 " [experiment] map space to comment toggle
 nnoremap <space> :call NERDComment(0,"toggle")<CR>
@@ -295,6 +314,11 @@ let g:signify_vcs_list = [ 'git' ]
 " Remove default white color in the sign column
 highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
 
+"" Blamer
+let g:blamer_enabled = 1
+let g:blamer_delay = 200
+
+
 "" Vue syntax
 " Detect which preprocessors are in the file on opening:
 let g:vue_pre_processors = 'detect_on_enter'
@@ -308,5 +332,9 @@ au BufNewFile,BufRead *.vue set filetype=vue.html
 ""
 
 command! Config :vsplit ~/.vimrc
+
+" Insert current datetime
+inoremap <F5> <C-R>=strftime("%c")<CR>
+nnoremap <F5> "=strftime("%c")<CR>P
 
 " vim: set ft=vim :
