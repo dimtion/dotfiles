@@ -53,7 +53,8 @@ Plug 'mbbill/undotree'
 " now.
 " Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'fannheyward/coc-rust-analyzer'
+" Plug 'fannheyward/coc-rust-analyzer'
+" Plug 'liuchengxu/vista.vim'
 
 " Very useful for group projects without a formater
 " See: https://editorconfig.org/
@@ -70,6 +71,9 @@ Plug 'jparise/vim-graphql'
 
 " Git wrapper
 Plug 'tpope/vim-fugitive'
+" :BlamerToggle
+" Plug 'APZelos/blamer.nvim'
+Plug 'dimtion/blamer.nvim'
 
 " [count]<space> Toggle comment
 " [count]<leader>c<space> Toggle comment
@@ -130,9 +134,13 @@ noremap <Left> <Nop>
 
 " Splitsmovement
 " Quicly move to left/right/top/bottom pane
-nnoremap  
-nnoremap  
-nnoremap  
+nnoremap <c-h> <c-w><c-h>
+nnoremap <c-j> <c-w><c-j>
+nnoremap <c-k> <c-w><c-k>
+nnoremap <c-l> <c-w><c-l>
+" nnoremap  
+" nnoremap  
+" nnoremap  
 
 " I prefer this behavior of split
 set splitbelow
@@ -151,9 +159,15 @@ set laststatus=2
 let g:EasyMotion_smartcase = 1
 
 " `s{char}{label}`
+" Fake bindings for VSCode
 nmap s <Plug>(easymotion-overwin-f2)
 
 " FZF
+" tips:
+" Open in new tab: <C-T>
+" Open in new split: <C-X>
+" Open in new vertical split: <C-V>
+" :Files! (bang) will open in fullscreen
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Rg<cr>
 
@@ -206,6 +220,12 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
@@ -214,7 +234,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  :Format<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -255,7 +275,8 @@ command! StripTrailingWhitespaces :call <SID>StripTrailingWhitespaces()
 "" Coc specific configuration
 set updatetime=300
 
-" [experiment] map space to comment toggle
+
+" Map space to comment toggle
 nnoremap <space> :call NERDComment(0,"toggle")<CR>
 vnoremap <space> :call NERDComment(0,"toggle")<CR>
 
@@ -331,6 +352,8 @@ au BufNewFile,BufRead *.vue set filetype=vue.html
 "" Custom commands
 ""
 
+" format current buffer
+command! -nargs=0 Format :call CocAction('format')
 command! Config :vsplit ~/.vimrc
 
 " Insert current datetime
