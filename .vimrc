@@ -10,11 +10,31 @@
 " set nocompatible
 
 
-" Cheat sheet
+""
+"" Cheatsheet
+""
+
+" Scroll down one line: <C-E>
+" Scroll up one line: <C-Y>
+
+" Search exact word:     `#` / `*`
+" Search not exact word: `g#` / `g*`
+
+" Back-and-forth between 2 buffers: `<C-6>` or `:b#`
+" Jump to the previous position: `<C-O>`
+" Jump to next position: `<C-I>`
+
 " Open fold: zo
 " Close fold: zc
 " Toggle fold: za
-" Open all folds; zO
+" Open all folds: zO
+" Open all folds: zR
+
+" Select an HTML outer tag: vat
+" Select an HTML inner tag: vit
+" Other corner of selection: o
+
+
 
 ""
 "" Plugins declaration
@@ -73,7 +93,7 @@ Plug 'jparise/vim-graphql'
 Plug 'tpope/vim-fugitive'
 " :BlamerToggle
 " Plug 'APZelos/blamer.nvim'
-Plug 'dimtion/blamer.nvim'
+" Plug 'dimtion/blamer.nvim'
 
 " [count]<space> Toggle comment
 " [count]<leader>c<space> Toggle comment
@@ -171,6 +191,8 @@ nmap s <Plug>(easymotion-overwin-f2)
 nnoremap <c-p> :Files<cr>
 nnoremap <c-f> :Rg<cr>
 
+vnoremap // y:Rg <C-R>"<cr>
+
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -242,10 +264,15 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 "" Vista
 
@@ -347,13 +374,16 @@ let g:vue_pre_processors = 'detect_on_enter'
 au BufNewFile,BufRead *.vue set filetype=vue.html
 
 
-
 ""
 "" Custom commands
 ""
 
 " format current buffer
 command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
 command! Config :vsplit ~/.vimrc
 
 " Insert current datetime

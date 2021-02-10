@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.gem/ruby/2.3.0/bin:$HOME/.cargo/bin:$HOME/.npm/bin:$HOME/bin:/usr/local/opt/go/libexec/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
 #
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -87,10 +88,22 @@ export EDITOR='nvim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 alias gs='git status'
-alias ga='git add -p'
-alias gc='git commit -v'
-alias gd='git diff'
+alias ga='git add --patch'
+alias gc='git commit --verbose'
 alias gp='git push'
+alias gpf='git push --force-with-lease'
+alias gpu='git push -u origin `git rev-parse --abbrev-ref HEAD`'
+
+alias gh='git checkout'
+alias g-="git checkout -"
+
+alias gd='git diff'
+alias gds="git diff --staged"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias gg="~/projets/perso/scripts/update_master.sh"
+alias ggr="~/projets/perso/scripts/update_master.sh && git checkout - && git rebase master"
+alias ggm="~/projets/perso/scripts/update_master.sh && git checkout - && git merge master"
 
 # configuration management
 # See: https://news.ycombinator.com/item?id=11070797
