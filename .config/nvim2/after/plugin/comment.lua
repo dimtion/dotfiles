@@ -1,0 +1,15 @@
+local status_ok, comment = pcall(require, "Comment")
+if not status_ok then
+  return
+end
+
+comment.setup {
+  toggler = {
+    ---Line-comment toggle keymap
+    line = "<space>",
+  },
+  opleader = {
+    ---Line-comment keymap
+    line = "<space>",
+  },
+}
