@@ -27,11 +27,5 @@ vim.opt.laststatus = 2
 vim.opt.wildmenu = true
 vim.opt.wildignore = { "*.o", "*~", "*.pyc" }
 
--- Visuals
--- Set 24 bits colors
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 2
-vim.opt.colorcolumn = "80"
-
 -- Mouse
 vim.opt.mouse = ""

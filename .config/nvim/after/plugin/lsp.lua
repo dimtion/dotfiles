@@ -50,6 +50,28 @@ cmp.setup {
       ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
     },
   },
+  mapping = {
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        local entry = cmp.get_selected_entry()
+        if not entry then
+          cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+        else
+          cmp.confirm { select = true }
+        end
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  },
+  sources = cmp.config.sources({
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+  }, {
+    { name = "buffer" },
+  }, {
+    { name = "path" },
+  }),
 }
 
 vim.diagnostic.config {

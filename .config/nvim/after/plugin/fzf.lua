@@ -12,9 +12,9 @@ fzf.setup {
   winopts = {
     preview = {
       default = "builtin",
-      vertical = "up:45%",
+      vertical = "up:60%",
       horizontal = "right:70%",
-      layout = "flex",
+      layout = "flex", -- Note: vertical is good for long lines
     },
   },
   previewers = {
@@ -33,5 +33,6 @@ vim.keymap.set("n", "<c-p>", fzf.files, { silent = true })
 vim.keymap.set("n", "<c-f>", fzf.grep, { silent = true })
 vim.keymap.set("n", "<c-f><c-f>", fzf.live_grep_native, { silent = true })
 vim.keymap.set("n", "<c-s>", fzf.lsp_live_workspace_symbols, { silent = true })
-vim.keymap.set("n", "<leader>k", fzf.commands, { silent = true })
+vim.keymap.set("n", "<leader>c", fzf.commands, { silent = true })
+vim.keymap.set("n", "<leader>k", fzf.keymaps, { silent = true })
 vim.keymap.set("v", "//", fzf.grep_visual, { silent = true })

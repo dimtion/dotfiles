@@ -85,19 +85,19 @@ return require("packer").startup(function(use)
   -- TODO: configure
   use "easymotion/vim-easymotion"
 
-  -- TODO: configure
-  use {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
-    end,
-  }
+  -- Disabled because too slow (+5ms to start)
+  -- use {
+  --   "folke/which-key.nvim",
+  --   config = function()
+  --     vim.o.timeout = true
+  --     vim.o.timeoutlen = 300
+  --     require("which-key").setup {
+  --       -- your configuration comes here
+  --       -- or leave it empty to use the default settings
+  --       -- refer to the configuration section below
+  --     }
+  --   end,
+  -- }
 
   use {
     "nvim-telescope/telescope.nvim",
@@ -130,6 +130,8 @@ return require("packer").startup(function(use)
     "numToStr/Comment.nvim",
   }
 
+  use "nvim-tree/nvim-tree.lua"
+
   -- LSP
   use {
     "VonHeikemen/lsp-zero.nvim",
@@ -155,6 +157,15 @@ return require("packer").startup(function(use)
     },
   }
 
+  -- DAP
+  use {
+    "rccarriga/nvim-dap-ui",
+    requires = {
+      { "mfussenegger/nvim-dap" },
+      { "theHamsta/nvim-dap-virtual-text" },
+    },
+  }
+
   -- Zen mode
   use {
     "folke/zen-mode.nvim",
@@ -166,6 +177,8 @@ return require("packer").startup(function(use)
       }
     end,
   }
+
+  use "github/copilot.vim"
 
   if packer_bootstrap then
     require("packer").sync()
