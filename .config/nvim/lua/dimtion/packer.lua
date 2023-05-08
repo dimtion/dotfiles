@@ -118,6 +118,9 @@ return require("packer").startup(function(use)
     requires = { "nvim-tree/nvim-web-devicons" },
   }
 
+  -- Line
+  use "nvim-lualine/lualine.nvim"
+
   -- Tree-sitter
   --
   use {
