@@ -24,7 +24,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- When doing `*` search, highlight the word under the cursor without moving
 vim.keymap.set("n", "*", function()
-    vim.fn.setreg("/", [[\V\<]] .. vim.fn.escape(vim.fn.expand("<cword>"), [[/\]]) .. [[\>]])
-    vim.fn.histadd("/", vim.fn.getreg("/"))
-    vim.o.hlsearch = true
+  vim.fn.setreg(
+    "/",
+    [[\V\<]] .. vim.fn.escape(vim.fn.expand "<cword>", [[/\]]) .. [[\>]]
+  )
+  vim.fn.histadd("/", vim.fn.getreg "/")
+  vim.o.hlsearch = true
 end)

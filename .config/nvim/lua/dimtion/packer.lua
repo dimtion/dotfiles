@@ -121,8 +121,8 @@ return require("packer").startup(function(use)
   -- status Line
   -- disabled as it causes issues with startup menu
   use {
-      "nvim-lualine/lualine.nvim",
-      disable = true,
+    "nvim-lualine/lualine.nvim",
+    disable = true,
   }
 
   -- Tree-sitter
