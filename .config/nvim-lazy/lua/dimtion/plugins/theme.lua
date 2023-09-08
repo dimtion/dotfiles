@@ -1,0 +1,31 @@
+return {
+  -- Web icons
+  { "nvim-tree/nvim-web-devicons", lazy = false, priority = 1002 },
+
+  -- Follow system dark/light mode using SIGWING
+  { "vimpostor/vim-lumen", lazy = false, priority = 1001 },
+
+  -- rose-pine theme
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      -- disable_background = true,
+      -- variant = 'dawn',
+      dim_nc_background = true,
+      groups = {
+        panel = "overlay",
+      },
+      highlight_groups = {
+
+        -- Blend colours against the "base" background
+        CursorLine = { bg = "foam", blend = 10 },
+        StatusLine = { fg = "base", bg = "rose", blend = 90 },
+        StatusLineNC = { bg = "rose", blend = 10 },
+        PmenuSel = { fg = "base", bg = "pine" },
+      },
+    },
+  },
+}
