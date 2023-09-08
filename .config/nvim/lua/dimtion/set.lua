@@ -18,6 +18,9 @@ vim.opt.shiftwidth = 4
 -- Do not change the endofline if there is an issue
 vim.opt.fixendofline = false
 
+-- Highlight current line
+vim.opt.cursorline = true
+
 -- Status bar
 vim.opt.ruler = true
 vim.opt.showcmd = true

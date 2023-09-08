@@ -118,8 +118,12 @@ return require("packer").startup(function(use)
     requires = { "nvim-tree/nvim-web-devicons" },
   }
 
-  -- Line
-  use "nvim-lualine/lualine.nvim"
+  -- status Line
+  -- disabled as it causes issues with startup menu
+  use {
+      "nvim-lualine/lualine.nvim",
+      disable = true,
+  }
 
   -- Tree-sitter
   --

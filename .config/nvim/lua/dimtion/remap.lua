@@ -21,3 +21,10 @@ vim.keymap.set("n", "<leader>p", "<cmd>set invpaste paste?<CR>")
 -- Copy selection to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
+
+-- When doing `*` search, highlight the word under the cursor without moving
+vim.keymap.set("n", "*", function()
+    vim.fn.setreg("/", [[\V\<]] .. vim.fn.escape(vim.fn.expand("<cword>"), [[/\]]) .. [[\>]])
+    vim.fn.histadd("/", vim.fn.getreg("/"))
+    vim.o.hlsearch = true
+end)

@@ -34,6 +34,8 @@
 " Select an HTML inner tag: vit
 " Other corner of selection: o
 
+" Show diff with local file
+" :w !diff % -
 
 
 ""
