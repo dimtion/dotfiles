@@ -32,3 +32,6 @@ vim.opt.wildignore = { "*.o", "*~", "*.pyc" }
 
 -- Mouse
 vim.opt.mouse = ""
+
+-- Support editor config
+vim.g.editorconfig = true

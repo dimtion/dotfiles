@@ -28,6 +28,12 @@ local setup_lsp = function(_, _opts)
 
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+
+    -- setup inlay_hint
+    if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint(bufnr, true)
+        vim.keymap.set("n", "<leader>ih", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+    end
   end)
 
   lsp.setup()

@@ -14,6 +14,6 @@ return {
 
     local k_opts =
       { noremap = true, silent = true, desc = "Hop/easymoting with 2 chars" }
-    vim.keymap.set({"n", "v"}, "s", "<cmd>HopChar2MW<cr>", k_opts)
+    vim.keymap.set({ "n", "v" }, "s", "<cmd>HopChar2MW<cr>", k_opts)
   end,
 }

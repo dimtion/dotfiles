@@ -60,6 +60,15 @@ return {
         silent = true,
         desc = "fzf visual grep",
       },
+      {
+        "<leader>qf",
+        function()
+          require("fzf-lua").quickfix()
+        end,
+        mode = "n",
+        silent = true,
+        desc = "fzf quickfix",
+      },
     },
     opts = {
       "telescope",
@@ -86,5 +95,10 @@ return {
         },
       },
     },
+    config = function(_, opts)
+      local fzf = require "fzf-lua"
+      fzf.setup(opts)
+      fzf.register_ui_select()
+    end,
   },
 }

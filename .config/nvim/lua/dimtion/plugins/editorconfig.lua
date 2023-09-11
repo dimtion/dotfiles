@@ -2,6 +2,6 @@
 return {
   {
     "editorconfig/editorconfig-vim",
-    enabled = true,
+    enabled = vim.fn.has('nvim-0.9') == 0,
   },
 }

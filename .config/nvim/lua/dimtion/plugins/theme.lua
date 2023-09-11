@@ -1,3 +1,5 @@
+vim.api.nvim_set_hl(0, "LspInlayHint", { italic = true })
+
 return {
   -- Web icons
   { "nvim-tree/nvim-web-devicons", lazy = false, priority = 1002 },
@@ -22,9 +24,13 @@ return {
 
         -- Blend colours against the "base" background
         CursorLine = { bg = "foam", blend = 10 },
-        StatusLine = { fg = "base", bg = "rose", blend = 90 },
-        StatusLineNC = { bg = "rose", blend = 10 },
+        -- StatusLine = { fg = "base", bg = "rose", blend = 90 },
+        -- StatusLineNC = { bg = "rose", blend = 10 },
+        StatusLine = { fg = "love", bg = "love", blend = 10 },
+		StatusLineNC = { fg = "subtle", bg = "surface" },
+
         PmenuSel = { fg = "base", bg = "pine" },
+        LspInlayHint = { fg = "subtle" },
       },
     },
   },
