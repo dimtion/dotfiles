@@ -52,7 +52,7 @@ return {
       symbol = "│",
       options = { try_as_border = true },
       animation = function(s, n) return 5 end,
-      delay = 100,
+      delay = 150,
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {

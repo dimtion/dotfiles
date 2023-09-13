@@ -9,7 +9,6 @@ local cc_group = vim.api.nvim_create_augroup("dimtion.status_column_group", {})
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   group = cc_group,
   callback = function()
-    print "enter"
     vim.opt.colorcolumn = "80"
   end,
 })
@@ -17,7 +16,6 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   group = cc_group,
   callback = function()
-    print "leave"
     vim.opt.colorcolumn = "0"
   end,
 })

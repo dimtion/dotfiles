@@ -14,6 +14,7 @@ return {
       large_file_overrides = {
         providers = { "lsp" },
       },
+      min_count_to_highlight = 2,
     },
     config = function(_, opts)
       require("illuminate").configure(opts)

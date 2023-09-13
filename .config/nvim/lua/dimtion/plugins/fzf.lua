@@ -1,3 +1,4 @@
+-- Using fzf-lua
 return {
   {
     "ibhagwan/fzf-lua",
@@ -69,6 +70,22 @@ return {
         silent = true,
         desc = "fzf quickfix",
       },
+      {
+        "<c-m>",
+        function()
+          require("fzf-lua").marks()
+        end,
+        silent = true,
+        desc = "fzf marks",
+      },
+      {
+        "<c-h>",
+        function()
+          require("fzf-lua").help_tags()
+        end,
+        silent = true,
+        desc = "fzf help tags",
+      },
     },
     opts = {
       "telescope",
@@ -76,12 +93,15 @@ return {
       -- fzf_opts = {
       --   ['--preview-window'] = 'nohidden,down,50%',
       -- },
+      fzf_opts = {
+        ['--history'] = vim.fn.stdpath("data") .. 'fzf-lua-history',
+      },
       winopts = {
         preview = {
           default = "builtin",
           vertical = "up:60%",
           horizontal = "right:70%",
-          layout = "flex", -- Note: vertical is good for long lines
+          layout = "flex", -- Note: `vertical` is good for long lines
         },
       },
       previewers = {

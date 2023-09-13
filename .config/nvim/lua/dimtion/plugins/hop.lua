@@ -1,3 +1,5 @@
+-- Easymotion like movements `s<c1><c2>`
+-- Works faster in nvim using overlay instead of replacing buffer
 return {
   "phaazon/hop.nvim",
   enabled = true,

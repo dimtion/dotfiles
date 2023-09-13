@@ -1,3 +1,4 @@
+-- Included in nvim > 0.9
 -- See: https://editorconfig.org/
 return {
   {
