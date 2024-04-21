@@ -50,11 +50,18 @@ return {
         desc = "Preview or display git hunk",
       },
       {
-        "<leader>hd",
+        "<leader>gd",
         function()
           require("gitsigns").diffthis()
         end,
         desc = "Diff this buffer",
+      },
+      {
+        "<leader>gr",
+        function()
+          require("gitsigns").reset_hunks()
+        end,
+        desc = "Reset hunk",
       },
     },
     opts = {

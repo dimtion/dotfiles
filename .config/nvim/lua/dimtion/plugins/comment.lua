@@ -3,7 +3,8 @@ return {
   {
     "numToStr/Comment.nvim",
     enabled = true,
-    lazy = true,
+    -- Does not startup correctly if lazy = true
+    lazy = false,
     keys = "<space>",
     opts = {
       toggler = {

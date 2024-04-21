@@ -38,7 +38,8 @@ vim.keymap.set(
 )
 
 -- map p in visual mode replace the selected text with the yank register
-vim.keymap.set("v", "p", [["_dP]], { noremap = true })
+-- Disabled as it does not work properly
+-- vim.keymap.set("v", "p", [["_dP]], { noremap = true })
 
 -- When doing `*` search, highlight the word under the cursor without moving
 -- TODO: does not work well for [^\w] chars

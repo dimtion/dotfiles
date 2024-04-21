@@ -1,12 +1,12 @@
 local setup_lsp = function(_, _opts)
-  local lsp = require "lsp-zero"
+  local lsp_zero = require "lsp-zero"
 
-  lsp.preset "minimal"
+  lsp_zero.preset "minimal"
 
   local lspconfig = require "lspconfig"
-  lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+  lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
 
-  lsp.on_attach(function(client, bufnr)
+  lsp_zero.on_attach(function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -24,7 +24,7 @@ local setup_lsp = function(_, _opts)
 
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-    vim.keymap.set("i", "<c-h>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
@@ -36,7 +36,7 @@ local setup_lsp = function(_, _opts)
     end
   end)
 
-  lsp.setup()
+  lsp_zero.setup()
 
   require("mason").setup {}
   require("mason-lspconfig").setup {
@@ -49,9 +49,9 @@ local setup_lsp = function(_, _opts)
       "lua_ls",
     },
     handlers = {
-      lsp.default_setup,
+      lsp_zero.default_setup,
       lua_ls = function()
-        local lua_opts = lsp.nvim_lua_ls()
+        local lua_opts = lsp_zero.nvim_lua_ls()
         require("lspconfig").lua_ls.setup(lua_opts)
       end,
     },
