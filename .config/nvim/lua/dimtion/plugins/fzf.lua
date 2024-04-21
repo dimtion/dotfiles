@@ -79,7 +79,7 @@ return {
         desc = "fzf marks",
       },
       {
-        "<c-h>",
+        "<leader>hh",
         function()
           require("fzf-lua").help_tags()
         end,

@@ -51,8 +51,10 @@ return {
       -- symbol = "▏",
       symbol = "│",
       options = { try_as_border = true },
-      animation = function(s, n) return 5 end,
-      delay = 150,
+      draw = {
+          animation = function() return 0 end,
+          delay = 50,
+      }
     },
     init = function()
       vim.api.nvim_create_autocmd("FileType", {
