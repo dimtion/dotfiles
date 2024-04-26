@@ -10,9 +10,6 @@ return {
       { "<C-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-context",
-    },
     opts = {
       -- A list of parser names, or "all"
       ensure_installed = {
@@ -23,10 +20,10 @@ return {
         "lua",
         -- "rust",
         "python",
-        "bash",
+        -- "bash",
         -- "java",
-        "yaml",
-        "json",
+        -- "yaml",
+        -- "json",
         -- "go",
         "regex",
         "markdown",
@@ -63,5 +60,15 @@ return {
     config = function(_, opts)
       return require("nvim-treesitter.configs").setup(opts)
     end,
+  },
+  {
+      -- Show current function at the top of the buffer
+      "nvim-treesitter/nvim-treesitter-context",
+      enabled = true,
+      opts = {
+          max_lines = 3,
+          -- multiline_threshold = 3,
+          min_window_height = 30,
+      },
   },
 }

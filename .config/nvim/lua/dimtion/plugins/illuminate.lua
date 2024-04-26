@@ -9,6 +9,7 @@ return {
       delay = 50,
       providers = {
         "treesitter",
+        "regex",
       },
       large_file_cutoff = 2000,
       large_file_overrides = {
