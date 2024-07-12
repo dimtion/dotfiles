@@ -27,7 +27,7 @@ return {
         -- StatusLine = { fg = "base", bg = "rose", blend = 90 },
         -- StatusLineNC = { bg = "rose", blend = 10 },
         StatusLine = { fg = "love", bg = "love", blend = 10 },
-		StatusLineNC = { fg = "subtle", bg = "surface" },
+        StatusLineNC = { fg = "subtle", bg = "surface" },
 
         PmenuSel = { fg = "base", bg = "pine" },
         LspInlayHint = { fg = "subtle" },

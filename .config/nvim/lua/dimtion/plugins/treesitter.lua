@@ -62,13 +62,13 @@ return {
     end,
   },
   {
-      -- Show current function at the top of the buffer
-      "nvim-treesitter/nvim-treesitter-context",
-      enabled = true,
-      opts = {
-          max_lines = 3,
-          -- multiline_threshold = 3,
-          min_window_height = 30,
-      },
+    -- Show current function at the top of the buffer
+    "nvim-treesitter/nvim-treesitter-context",
+    enabled = true,
+    opts = {
+      max_lines = 3,
+      -- multiline_threshold = 3,
+      min_window_height = 30,
+    },
   },
 }

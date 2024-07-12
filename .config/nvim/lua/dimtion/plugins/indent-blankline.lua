@@ -11,12 +11,14 @@ return {
       symbol = "│",
       options = { try_as_border = true },
       draw = {
-          animation = function() return 0 end, -- no animation
-          delay = 50,
-      }
+        animation = function()
+          return 0
+        end, -- no animation
+        delay = 50,
+      },
     },
     init = function()
-      require('mini.indentscope').gen_animation.none()
+      require("mini.indentscope").gen_animation.none()
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
           "help",

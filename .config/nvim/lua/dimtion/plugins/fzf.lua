@@ -94,7 +94,7 @@ return {
       --   ['--preview-window'] = 'nohidden,down,50%',
       -- },
       fzf_opts = {
-        ['--history'] = vim.fn.stdpath("data") .. 'fzf-lua-history',
+        ["--history"] = vim.fn.stdpath "data" .. "fzf-lua-history",
       },
       winopts = {
         preview = {

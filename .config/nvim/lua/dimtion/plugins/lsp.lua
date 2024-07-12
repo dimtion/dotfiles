@@ -31,8 +31,10 @@ local setup_lsp = function(_, _opts)
 
     -- setup inlay_hint
     if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(bufnr, true)
-        vim.keymap.set("n", "<leader>ih", function() vim.lsp.inlay_hint(0, nil) end, { desc = "Toggle Inlay Hints" })
+      vim.lsp.inlay_hint.enable(bufnr, true)
+      vim.keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint(0, nil)
+      end, { desc = "Toggle Inlay Hints" })
     end
   end)
 
@@ -86,6 +88,19 @@ local setup_lsp = function(_, _opts)
       { name = "luasnip" },
     }, {
       { name = "buffer" },
+    }, {
+      {
+        name = "buffer",
+        option = {
+          get_bufnrs = function()
+            local bufs = {}
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              bufs[vim.api.nvim_win_get_buf(win)] = true
+            end
+            return vim.tbl_keys(bufs)
+          end,
+        },
+      },
     }, {
       { name = "path" },
     }),

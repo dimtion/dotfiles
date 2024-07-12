@@ -5,12 +5,12 @@ return {
     cmd = { "TodoTrouble", "TodoTelescope" },
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-        highlight = {
-            pattern = [[.*<(KEYWORDS)[^:]*:]],
-        },
-        search = {
-            pattern = [[\b(KEYWORDS)[^:]*:]],
-        },
+      highlight = {
+        pattern = [[.*<(KEYWORDS)[^:]*:]],
+      },
+      search = {
+        pattern = [[\b(KEYWORDS)[^:]*:]],
+      },
     },
     keys = {
       {
