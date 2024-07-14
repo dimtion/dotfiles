@@ -1,6 +1,15 @@
 return {
   -- Git wrapper
-  { "tpope/vim-fugitive", enabled = true },
+  { "tpope/vim-fugitive",
+    enabled = true,
+    keys = {
+        {
+            "<leader>gb",
+            ":Git blame -wMC --date=short<CR>",
+            {silent = true, desc = "Git blame file"},
+        }
+    },
+  },
   -- Gutter signs
   {
     "lewis6991/gitsigns.nvim",
@@ -36,7 +45,7 @@ return {
         desc = "Previous git hunk",
       },
       {
-        "<leader>gb",
+        "<leader>gsb",
         function()
           require("gitsigns").toggle_current_line_blame()
         end,
