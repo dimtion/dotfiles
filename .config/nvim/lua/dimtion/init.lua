@@ -9,4 +9,4 @@
 require "dimtion.lazy"
 require "dimtion.ui"
 require "dimtion.set"
-require "dimtion.remap"
+require "dimtion.mappings"

@@ -51,3 +51,13 @@ vim.keymap.set("n", "*", function()
   vim.fn.histadd("/", vim.fn.getreg "/")
   vim.o.hlsearch = true
 end)
+
+-- Insert the current date
+vim.keymap.set(
+  "n",
+  "<leader>it",
+  function()
+      vim.api.nvim_put({ os.date "%Y-%m-%d %H:%M:%S" }, "c", true, true)
+  end,
+  { noremap = true, silent = true, desc = "Insert current timestamp" }
+)
