@@ -1,7 +1,7 @@
 return {
   -- Git wrapper
   { "tpope/vim-fugitive",
-    enabled = true,
+    enabled = false,
     keys = {
         {
             "<leader>gb",
