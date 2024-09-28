@@ -10,3 +10,7 @@ require "dimtion.lazy"
 require "dimtion.ui"
 require "dimtion.set"
 require "dimtion.mappings"
+
+-- Append optional work configuration for customization
+vim.opt.runtimepath:append('~/config/nvim-work')
+pcall(require, "nvim-work")
