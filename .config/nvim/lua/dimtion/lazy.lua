@@ -15,10 +15,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Setup to use plugins folder
-require("lazy").setup("dimtion/plugins", {
-  change_detection = {
-    -- automatically check for config file changes and reload the ui
-    enabled = false,
-    notify = true, -- get a notification when changes are found
+local status, _ = pcall(require, "nvim-work")
+require("lazy").setup({
+  spec = {
+    -- import your plugins
+    { import = "dimtion/plugins" },
+    status and { import = "nvim-work/plugins" } or nil,
   },
 })
+-- require("lazy").setup("dimtion/plugins", {
+--   change_detection = {
+--     -- automatically check for config file changes and reload the ui
+--     enabled = false,
+--     notify = true, -- get a notification when changes are found
+--   },
+-- })
