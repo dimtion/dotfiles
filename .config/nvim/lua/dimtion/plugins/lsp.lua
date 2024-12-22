@@ -50,7 +50,7 @@ local setup_lsp = function(_, _opts)
     -- Replace the language servers listed here
     -- with the ones you want to install
     ensure_installed = {
-      "tsserver",
+      "ts_ls",
       "rust_analyzer",
       "pyright",
       "lua_ls",
