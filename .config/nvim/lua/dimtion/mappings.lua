@@ -61,3 +61,9 @@ vim.keymap.set(
   end,
   { noremap = true, silent = true, desc = "Insert current timestamp" }
 )
+
+-- Autocmd to remove whitespaces
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    command = "%s/\\s\\+$//e"
+})
