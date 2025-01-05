@@ -1,1 +1,16 @@
 theme "rose-pine-dawn"
+
+keybinds {
+    tmux {
+        bind "s" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                    move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
+    }
+}
+
+// default_layout "compact"
+pane_frames false
