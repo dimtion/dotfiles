@@ -5,7 +5,8 @@ return {
   { "nvim-tree/nvim-web-devicons", lazy = false, priority = 1002 },
 
   -- Follow system dark/light mode using SIGWING
-  { "vimpostor/vim-lumen", lazy = false, priority = 1001 },
+  -- Lumen is very slow... and not working.. disabling it..
+  -- { "vimpostor/vim-lumen", lazy = false, priority = 1001 },
 
   -- rose-pine theme
   {
