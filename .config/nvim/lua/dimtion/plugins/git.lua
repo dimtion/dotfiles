@@ -1,13 +1,14 @@
 return {
   -- Git wrapper
-  { "tpope/vim-fugitive",
+  {
+    "tpope/vim-fugitive",
     enabled = false,
     keys = {
-        {
-            "<leader>gb",
-            ":Git blame -wMC --date=short<CR>",
-            {silent = true, desc = "Git blame file"},
-        }
+      {
+        "<leader>gb",
+        ":Git blame -wMC --date=short<CR>",
+        { silent = true, desc = "Git blame file" },
+      },
     },
   },
   -- Gutter signs

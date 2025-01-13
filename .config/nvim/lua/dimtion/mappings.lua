@@ -53,17 +53,12 @@ vim.keymap.set("n", "*", function()
 end)
 
 -- Insert the current date
-vim.keymap.set(
-  "n",
-  "<leader>it",
-  function()
-      vim.api.nvim_put({ os.date "%Y-%m-%d %H:%M:%S" }, "c", true, true)
-  end,
-  { noremap = true, silent = true, desc = "Insert current timestamp" }
-)
+vim.keymap.set("n", "<leader>it", function()
+  vim.api.nvim_put({ os.date "%Y-%m-%d %H:%M:%S" }, "c", true, true)
+end, { noremap = true, silent = true, desc = "Insert current timestamp" })
 
 -- Autocmd to remove whitespaces
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*",
-    command = "%s/\\s\\+$//e"
+  pattern = "*",
+  command = "%s/\\s\\+$//e",
 })

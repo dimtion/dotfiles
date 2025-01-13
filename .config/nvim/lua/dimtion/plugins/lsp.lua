@@ -34,11 +34,13 @@ local setup_lsp = function(_, _opts)
       vim.lsp.inlay_hint.enable()
     end
     vim.keymap.set("n", "<leader>ih", function()
-      if vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider then
+      if
+        vim.lsp.inlay_hint and client.server_capabilities.inlayHintProvider
+      then
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
         print("Inlay hints:", vim.lsp.inlay_hint.is_enabled())
       else
-        print("Inlay hints not supported by nvim or LSP")
+        print "Inlay hints not supported by nvim or LSP"
       end
     end, { desc = "Toggle Inlay Hints" })
   end)
