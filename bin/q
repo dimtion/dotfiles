@@ -1,0 +1,11 @@
+#!/bin/sh
+
+PROMPT="Answer in as few words as possible. Use a brief style with short replies."
+
+export AWS_PROFILE=llm-access
+
+exec uvx --isolated --quiet --with llm-bedrock-anthropic \
+    llm \
+    -m bedrock-claude-v3.5-sonnet-v2 \
+    -s "${PROMPT}" \
+    "$*" | glow -s dark -
