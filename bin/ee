@@ -2,11 +2,61 @@
 
 set -euo pipefail
 
+show_help() {
+    cat << EOF
+Usage: $(basename "$0") [OPTIONS] [FILE]
+
+A text editor wrapper that can handled piped file as an input and pipes the
+output to std-out
+
+Options:
+    -h, --help      Show this help message and exit
+    -c, --clear     Clear temporary files after editing
+
+Examples:
+    # Edit a new temporary file and output to stdout:
+    $(basename "$0")
+
+    # Edit an existing file and output to stdout:
+    $(basename "$0") filename.txt
+
+    # Edit piped input and pipe the output
+    curl https://test.com/api.json | $(basename "$0") | jq .
+EOF
+    exit 0
+}
+
+CLEAR=0
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -h|--help)
+            show_help
+            ;;
+        -c|--clear)
+            CLEAR=1
+            ;;
+        *)
+            break
+            ;;
+    esac
+    shift
+done
+
+: "${VISUAL:="${EDITOR:-vi}"}"
+
 if [ $# -eq 0 ]; then
     TMP_FILE=/tmp/scratch_$(date -I)_$$
+    if [ "${CLEAR}" -eq 1 ]; then
+        trap "rm -f $TMP_FILE" exit;
+    fi
 else
     TMP_FILE="$1"
 fi
 
-$VISUAL "$TMP_FILE" >/dev/tty
+# Check if we have stdin data (pipe or redirection)
+if [ ! -t 0 ]; then
+    cat > "${TMP_FILE}"
+fi
+
+$VISUAL "$TMP_FILE" >/dev/tty || exit 1
 exec cat "$TMP_FILE"
