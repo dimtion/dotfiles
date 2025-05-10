@@ -3,7 +3,7 @@
 return {
   -- Using smoka7 fork instead of phaazon/hop.nvim since main repo is not maintained anymore
   "smoka7/hop.nvim",
-  enabled = true,
+  -- enabled = false,
   lazy = false,
   version = "*",
   opts = {

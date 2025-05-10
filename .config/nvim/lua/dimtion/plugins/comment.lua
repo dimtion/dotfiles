@@ -1,8 +1,9 @@
 -- Comment using space
+-- TODO: migrate to nvim integrated?
 return {
   {
     "numToStr/Comment.nvim",
-    enabled = true,
+    -- enabled = false,
     -- Does not startup correctly if lazy = true
     lazy = false,
     keys = "<space>",

@@ -88,7 +88,7 @@ return {
       },
     },
     opts = {
-      "telescope",
+      "border-fused",
       -- preview={default="down"}
       -- fzf_opts = {
       --   ['--preview-window'] = 'nohidden,down,50%',
@@ -99,7 +99,7 @@ return {
       winopts = {
         preview = {
           default = "builtin",
-          vertical = "up:60%",
+          vertical = "down:70%",
           horizontal = "right:70%",
           layout = "flex", -- Note: `vertical` is good for long lines
         },

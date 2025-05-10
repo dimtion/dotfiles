@@ -1,7 +1,7 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
-    enabled = true,
+    -- enabled = false,
     lazy = false, -- according to plugin owner lazy load is not deterministic
     dependencies = {
       "nvim-tree/nvim-web-devicons",

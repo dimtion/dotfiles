@@ -14,7 +14,7 @@ return {
   -- Gutter signs
   {
     "lewis6991/gitsigns.nvim",
-    enabled = true,
+    -- enabled = false,
     event = { "BufReadPre", "BufNewFile" },
     keys = {
       {
