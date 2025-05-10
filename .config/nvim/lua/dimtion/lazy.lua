@@ -19,7 +19,7 @@ local work, _ = pcall(require, "work")
 require("lazy").setup {
   spec = {
     { import = "dimtion/plugins" },
-    work and { import = "nvim-work/plugins" } or nil,
+    (work and { import = "work/plugins" }) or nil,
   },
   dev = {
       path = "~/src/"
