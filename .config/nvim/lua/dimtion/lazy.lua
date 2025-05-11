@@ -22,6 +22,6 @@ require("lazy").setup {
     (work and { import = "work/plugins" }) or nil,
   },
   dev = {
-      path = "~/src/"
+    path = "~/src/",
   },
 }
