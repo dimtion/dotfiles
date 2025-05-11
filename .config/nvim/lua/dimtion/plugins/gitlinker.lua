@@ -1,12 +1,10 @@
 return {
-  "ruifm/gitlinker.nvim",
+  "linrongbin16/gitlinker.nvim",
   -- enabled = false,
-  keys = {
-    {
-      "<leader>gy",
-      mode = { "n", "v" },
-      desc = "Git repo link",
+  cmd = "GitLink",
+    keys = {
+      { "<leader>gy", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+      { "<leader>gY", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
     },
-  },
-  opts = { },
+    opts = {},
 }
