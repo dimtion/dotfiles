@@ -4,12 +4,17 @@ vim.opt.scrolloff = 2
 vim.opt.colorcolumn = "0"
 
 -- Create autocmd to hide and show color-column when entering insert mode
--- TODO: support editor config / variable lenght
 local cc_group = vim.api.nvim_create_augroup("dimtion.status_column_group", {})
 vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   group = cc_group,
   callback = function()
-    vim.opt.colorcolumn = "80"
+    local default = "80"
+    local editorconfig = vim.b.editorconfig
+    if editorconfig and editorconfig.max_line_length then
+      vim.opt.colorcolumn = editorconfig.max_line_length or default
+    else
+      vim.opt.colorcolumn = default
+    end
   end,
 })
 
