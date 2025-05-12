@@ -1,4 +1,6 @@
-local setup_lsp = function(_, _opts)
+local setup_lsp = function(_, _opts) end
+
+local setup_lsp2 = function(_, _opts)
   local lsp_zero = require "lsp-zero"
 
   lsp_zero.preset "minimal"
@@ -117,7 +119,7 @@ end
 
 return {
   "VonHeikemen/lsp-zero.nvim",
-  enabled = true,
+  enabled = false,
   branch = "dev-v3",
   dependencies = {
     -- LSP Support

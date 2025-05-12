@@ -21,6 +21,10 @@ require("lazy").setup {
     { import = "dimtion/plugins" },
     (work and { import = "work/plugins" }) or nil,
   },
+  change_detection = {
+    enabled = false,
+    notify = false,
+  },
   dev = {
     path = "~/src/",
   },
