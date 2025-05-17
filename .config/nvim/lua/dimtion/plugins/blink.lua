@@ -30,7 +30,7 @@ return {
           -- do not fallback to buffer source, always use buffer source
           fallbacks = {},
           async = true,
-        }
+        },
       },
     },
 

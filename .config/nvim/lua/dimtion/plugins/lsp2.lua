@@ -29,7 +29,7 @@ return {
       "mason-org/mason.nvim",
     },
     keys = {
-      { "gd", vim.lsp.buf.definition , desc = "Go to definition" },
+      { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
       { "<LocalLeader>d", vim.diagnostic.open_float, desc = "Open diagnostic" },
       {
         "<LocalLeader>f",
