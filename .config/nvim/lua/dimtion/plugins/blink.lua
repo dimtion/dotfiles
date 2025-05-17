@@ -8,6 +8,12 @@ return {
     keymap = { preset = "default" },
 
     completion = {
+      list = {
+        selection = {
+          preselect = false,
+          auto_insert = true,
+        },
+      },
       documentation = { auto_show = true },
       ghost_text = {
         enabled = true,
@@ -19,13 +25,15 @@ return {
       per_filetype = {
         codecompanion = { "codecompanion" },
       },
+      providers = {
+        lsp = {
+          -- do not fallback to buffer source, always use buffer source
+          fallbacks = {},
+          async = true,
+        }
+      },
     },
 
     signature = { enabled = true },
-
-    cmdline = {
-      keymap = { preset = "inherit" },
-      completion = { menu = { auto_show = true } },
-    },
   },
 }

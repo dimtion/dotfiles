@@ -24,7 +24,7 @@ return {
       highlight_groups = {
 
         -- Blend colours against the "base" background
-        CursorLine = { bg = "foam", blend = 10 },
+        CursorLine = { bg = "pine", blend = 30 },
         -- StatusLine = { fg = "base", bg = "rose", blend = 90 },
         -- StatusLineNC = { bg = "rose", blend = 10 },
         StatusLine = { fg = "love", bg = "love", blend = 10 },
@@ -32,6 +32,7 @@ return {
 
         PmenuSel = { fg = "base", bg = "pine" },
         LspInlayHint = { fg = "subtle" },
+        GitSignsCurrentLineBlame = { fg = "subtle" },
       },
     },
   },

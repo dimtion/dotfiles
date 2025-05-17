@@ -26,6 +26,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave" }, {
 })
 
 vim.cmd "colorscheme rose-pine"
+vim.cmd "set background=dark"
 
 -- Enable word wrap for Markdown files
 vim.api.nvim_create_autocmd("FileType", {

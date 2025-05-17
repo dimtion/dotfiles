@@ -8,6 +8,13 @@ return {
     "ravitemer/mcphub.nvim",
     "ravitemer/codecompanion-history.nvim",
   },
+  cmd = {
+    "CodeCompanion",
+    "CodeCompanionChat",
+    "CodeCompanionActions",
+    "CodeCompanionCmd",
+    "CodeCompanionHistory",
+  },
   keys = {
     {
       "<LocalLeader>w",
