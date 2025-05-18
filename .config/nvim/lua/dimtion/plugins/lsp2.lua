@@ -30,19 +30,21 @@ return {
     },
     keys = {
       { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
-      { "<LocalLeader>d", vim.diagnostic.open_float, desc = "Open diagnostic" },
+      { "gD", vim.diagnostic.open_float, desc = "Open diagnostic" },
       {
-        "<LocalLeader>f",
+        "<LocalLeader>lf",
         function()
           vim.lsp.buf.format { async = true }
         end,
         desc = "Open diagnostic",
       },
       {
-        "<leader>hd",
+        "<LocalLeader>ld",
         function()
-          local diag = not vim.diagnostic.is_enabled()
           local bufnr = vim.api.nvim_get_current_buf()
+          local diag = not vim.diagnostic.is_enabled({
+            bufnr = bufnr,
+          })
           vim.notify("Buffer LSP diagnostic enabled: " .. tostring(diag))
 
           vim.diagnostic.enable(diag, { bufnr = bufnr })
@@ -51,13 +53,12 @@ return {
         desc = "Toggle buffer LSP diagnostic",
       },
       {
-        "<leader>hgd",
+        "<Leader>lD",
         function()
           local diag = not vim.diagnostic.is_enabled()
-          local bufnr = vim.api.nvim_get_current_buf()
-          vim.notify("Buffer LSP diagnostic enabled: " .. tostring(diag))
+          vim.notify("Global LSP diagnostic enabled: " .. tostring(diag))
 
-          vim.diagnostic.enable(diag, { bufnr = bufnr })
+          vim.diagnostic.enable(diag)
         end,
         mode = { "n" },
         desc = "Toggle global LSP diagnostic",

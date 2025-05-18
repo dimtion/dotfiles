@@ -2,6 +2,7 @@
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 2
 vim.opt.colorcolumn = "0"
+vim.opt.winborder = "rounded"
 
 -- Create autocmd to hide and show color-column when entering insert mode
 local cc_group = vim.api.nvim_create_augroup("dimtion.status_column_group", {})

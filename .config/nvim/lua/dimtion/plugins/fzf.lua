@@ -3,6 +3,7 @@ return {
   {
     "ibhagwan/fzf-lua",
     enabled = true,
+    lazy = "VeryLazy",
     keys = {
       {
         "<c-p>",
@@ -86,6 +87,7 @@ return {
         silent = true,
         desc = "fzf help tags",
       },
+      { "<leader>gl", "<cmd>FzfLua git_bcommits<cr>", silent = true, desc = "Git log (current buffer)", },
     },
     opts = {
       "border-fused",
@@ -95,14 +97,26 @@ return {
       -- },
       fzf_opts = {
         ["--history"] = vim.fn.stdpath "data" .. "fzf-lua-history",
+        ["--padding"] = "1,2",
       },
       winopts = {
+        backdrop = 30,
         preview = {
           default = "builtin",
           vertical = "down:70%",
           horizontal = "right:70%",
           layout = "flex", -- Note: `vertical` is good for long lines
+          scrollbar = "border",
         },
+        treesitter = {
+          enabled = true,
+          -- fzf_colors = { ["hl"] = "-1:reverse", ["hl+"] = "-1:reverse" },
+        },
+      },
+      fzf_colors = {
+        ["bg+"] = { "bg", "FzfLuaFzfCursorLine" },
+        ["separator"] = { "fg", "FzfLuaFzfSeparator" },
+        ["gutter"] = "-1",
       },
       previewers = {
         builtin = {
@@ -118,7 +132,13 @@ return {
     config = function(_, opts)
       local fzf = require "fzf-lua"
       fzf.setup(opts)
+      -- Use fzf as a ui-select
       fzf.register_ui_select()
     end,
+  },
+  {
+    'junegunn/fzf',
+    lazy = "VeryLazy",
+    build = ":call fzf#install()",
   },
 }

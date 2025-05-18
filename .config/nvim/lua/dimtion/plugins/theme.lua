@@ -19,6 +19,7 @@ return {
       -- variant = 'dawn',
       dim_nc_background = true,
       groups = {
+        -- border = { fg = "muted", bg = "none" },
         panel = "overlay",
       },
       highlight_groups = {
@@ -27,6 +28,20 @@ return {
         CursorLine = { bg = "pine", blend = 30 },
         -- StatusLine = { fg = "base", bg = "rose", blend = 90 },
         -- StatusLineNC = { bg = "rose", blend = 10 },
+        FloatBorder = { fg = "muted", bg = "none" },
+        NormalFloat = { fg = "text", bg = "none" },
+        FzfLuaTitle = { fg = "gold", bg = "none" },
+
+        FzfLuaBorder = { fg = "muted", bg = "none" },
+        FzfLuaPreviewBorder = { fg = "muted", bg = "none" },
+        FzfLuaCursorLine = { bg = "pine", blend = 50 },
+        FzfLuaFzfCursorLine = { bg = "pine", blend = 30 },
+        FzfLuaPathLineNr = { bg = "pine"},
+        FzfLuaBufFlagCur = { bg = "pine"},
+        FzfLuaFzfSeparator = { fg = "gold" },
+
+        -- FzfLuaBackdrop = { bg = "foam"},
+
         StatusLine = { fg = "love", bg = "love", blend = 10 },
         StatusLineNC = { fg = "subtle", bg = "surface" },
 
