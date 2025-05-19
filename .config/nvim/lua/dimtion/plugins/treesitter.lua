@@ -75,24 +75,24 @@ return {
             -- You can use the capture groups defined in textobjects.scm
             ["af"] = "@function.outer",
             ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            -- You can optionally set descriptions to the mappings (used in the desc parameter of
-            -- nvim_buf_set_keymap) which plugins like which-key display
-            ["ic"] = {
-              query = "@class.inner",
-              desc = "Select inner part of a class region",
-            },
+            ["aC"] = "@class.outer",
+            ["iC"] = "@class.inner",
             -- You can also use captures from other query groups like `locals.scm`
             ["as"] = {
               query = "@local.scope",
               query_group = "locals",
               desc = "Select language scope",
             },
+            ["ac"] = "@comment.outer",
+            ["ic"] = "@comment.inner",
           },
           selection_modes = {
             ["@function.outer"] = "V", -- linewise
             ["@function.inner"] = "V",
             ["@class.outer"] = "V",
+            ["@class.inner"] = "V",
+            ["@comment.inner"] = "V",
+            ["@comment.outer"] = "V",
           },
         },
         move = {
@@ -162,14 +162,14 @@ return {
       )
     end,
   },
-  {
-    -- Show current function at the top of the buffer
-    "nvim-treesitter/nvim-treesitter-context",
-    enabled = true,
-    opts = {
-      max_lines = 3,
-      -- multiline_threshold = 3,
-      min_window_height = 30,
-    },
-  },
+  -- {
+  --   -- Show current function at the top of the buffer
+  --   "nvim-treesitter/nvim-treesitter-context",
+  --   enabled = true,
+  --   opts = {
+  --     max_lines = 3,
+  --     -- multiline_threshold = 3,
+  --     min_window_height = 30,
+  --   },
+  -- },
 }

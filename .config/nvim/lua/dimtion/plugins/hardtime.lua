@@ -19,6 +19,15 @@ return {
         end,
         length = 2,
       },
+      ["[dcyvV][ia][%(%)]"] = {
+        message = function(keys) return "Use " .. keys:sub(1, 2) .. "b instead of " .. keys end,
+        length = 3,
+      },
+      ["[dcyvV][ia][%{%}]"] = {
+        message = function(keys) return "Use " .. keys:sub(1, 2) .. "B instead of " .. keys end,
+        length = 3,
+      },
+
       ["b[cd]t[\"']"] = {
         message = function(keys)
           return "Use " .. keys:sub(2, 2) .. "i" .. keys:sub(4, 4) .. " instead of " .. keys

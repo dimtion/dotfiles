@@ -55,13 +55,19 @@ return {
         silent = true,
         desc = "Quickfix (fzf)",
       },
+      -- {
+      --   "<c-m>",
+      --   function()
+      --     require("fzf-lua").marks()
+      --   end,
+      --   silent = true,
+      --   desc = "List marks (fzf)",
+      -- },
       {
-        "<c-m>",
-        function()
-          require("fzf-lua").marks()
-        end,
+        "<leader>hH",
+        "<cmd>FzfLua highlights<cr>",
         silent = true,
-        desc = "List marks (fzf)",
+        desc = "Neovim highlight groups (fzf)",
       },
       {
         "<leader>hh",

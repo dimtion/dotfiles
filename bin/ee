@@ -11,7 +11,7 @@ output to std-out
 
 Options:
     -h, --help      Show this help message and exit
-    -c, --clear     Clear temporary files after editing
+    -C, --clear     Clear temporary files after editing
 
 Examples:
     # Edit a new temporary file and output to stdout:
@@ -32,7 +32,7 @@ while [[ $# -gt 0 ]]; do
         -h|--help)
             show_help
             ;;
-        -c|--clear)
+        -C|--clear)
             CLEAR=1
             ;;
         *)
@@ -51,6 +51,7 @@ if [ $# -eq 0 ]; then
     fi
 else
     TMP_FILE="$1"
+    shift
 fi
 
 # Check if we have stdin data (pipe or redirection)
@@ -58,5 +59,5 @@ if [ ! -t 0 ]; then
     cat > "${TMP_FILE}"
 fi
 
-$VISUAL "$TMP_FILE" >/dev/tty || exit 1
+$VISUAL "$TMP_FILE" "$@" >/dev/tty || exit 1
 exec cat "$TMP_FILE"

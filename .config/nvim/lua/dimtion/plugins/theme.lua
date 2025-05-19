@@ -17,7 +17,7 @@ return {
     opts = {
       -- disable_background = true,
       -- variant = 'dawn',
-      dim_nc_background = true,
+      dim_inactive_windows = true,
       groups = {
         -- border = { fg = "muted", bg = "none" },
         panel = "overlay",
@@ -59,7 +59,8 @@ return {
     opts = {
       timeout = 10000,
       stages = "static",
-      render = "compact",
+      render = "wrapped-compact",
+      max_width = "50",
     },
     keys = {
       {
