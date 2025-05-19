@@ -18,23 +18,23 @@ vim.keymap.set("n", "<c-t>", "<cmd>tabnew<cr>", { desc = "Open new tab" })
 -- Enable paste mode
 vim.keymap.set(
   "n",
-  "<leader>p",
+  "<localleader>xp",
   "<cmd>set invpaste paste?<cr>",
-  { desc = "Enable paste mode" }
+  { desc = "Toggle paste mode" }
 )
 
 -- Copy selection to system clipboard
 vim.keymap.set(
   { "n", "v" },
-  "<leader>y",
+  "<localleader>y",
   [["+y]],
-  { desc = "Yank/copy selection to system clipboard" }
+  { desc = "Yank to system clipboard (selection)" }
 )
 vim.keymap.set(
   "n",
-  "<leader>Y",
+  "<localleader>Y",
   [["+Y]],
-  { desc = "Yank/copy to system clipboard (linewise)" }
+  { desc = "Yank to system clipboard (linewise)" }
 )
 
 -- map p in visual mode replace the selected text with the yank register
@@ -53,7 +53,7 @@ vim.keymap.set("n", "*", function()
 end)
 
 -- Insert the current date
-vim.keymap.set("n", "<leader>it", function()
+vim.keymap.set("n", "<localleader>it", function()
   vim.api.nvim_put({ os.date "%Y-%m-%d %H:%M:%S" }, "c", true, true)
 end, { noremap = true, silent = true, desc = "Insert current timestamp" })
 
@@ -62,3 +62,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   command = "%s/\\s\\+$//e",
 })
+
+-- New file
+vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>",
+{ noremap = true, silent = true, desc = "New unnamed buffer" })
+vim.keymap.set("n", "<leader>fw", "<cmd>w<cr>",
+{ noremap = true, silent = true, desc = "Buffer write" })
+vim.keymap.set("n", "<leader>fx", "<cmd>x<cr>",
+{ noremap = true, silent = true, desc = "Buffer write and exit" })

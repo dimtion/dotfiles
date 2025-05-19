@@ -17,7 +17,7 @@ return {
   },
   keys = {
     {
-      "<LocalLeader>w",
+      "<leader>aa",
       "<cmd>CodeCompanionChat Toggle<cr>",
       desc = "Toggle CodeCompanionChat",
       noremap = true,

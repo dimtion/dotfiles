@@ -7,7 +7,7 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSUpdateSync" },
     keys = {
-      { "<C-space>", desc = "Increment selection" },
+      { "<c-space>", desc = "Increment selection" },
       { "<bs>", desc = "Decrement selection", mode = "x" },
     },
     opts = {
@@ -64,71 +64,103 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     opts = {
-       textobjects = {
-         select = {
-           enable = true,
+      textobjects = {
+        select = {
+          enable = true,
 
-           -- Automatically jump forward to textobj, similar to targets.vim
-           lookahead = true,
+          -- Automatically jump forward to textobj, similar to targets.vim
+          lookahead = true,
 
-           keymaps = {
-             -- You can use the capture groups defined in textobjects.scm
-             ["af"] = "@function.outer",
-             ["if"] = "@function.inner",
-             ["ac"] = "@class.outer",
-             -- You can optionally set descriptions to the mappings (used in the desc parameter of
-             -- nvim_buf_set_keymap) which plugins like which-key display
-             ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-             -- You can also use captures from other query groups like `locals.scm`
-             ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-           },
-           selection_modes = {
-             ['@function.outer'] = 'V', -- linewise
-             ['@function.inner'] = 'V',
-             ['@class.outer'] = 'V',
-           },
-         },
-         move = {
-           enable = true,
-           set_jumps = true,
-           goto_next_start = {
-             ["]m"] = "@function.outer",
-           },
-           goto_next_end = {
-             ["]M"] = "@function.outer",
-           },
-           goto_previous_start = {
-             ["[m"] = "@function.outer",
-           },
-           goto_previous_end = {
-             ["[M"] = "@function.outer",
-           },
-         },
-         lsp_interop = {
-           enable = true,
-           border = 'rounded',
-           floating_preview_opts = {},
-           peek_definition_code = {
-             ["gpf"] = "@function.outer",
-             ["gpc"] = "@class.outer",
-           },
-         },
-       }
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            -- You can optionally set descriptions to the mappings (used in the desc parameter of
+            -- nvim_buf_set_keymap) which plugins like which-key display
+            ["ic"] = {
+              query = "@class.inner",
+              desc = "Select inner part of a class region",
+            },
+            -- You can also use captures from other query groups like `locals.scm`
+            ["as"] = {
+              query = "@local.scope",
+              query_group = "locals",
+              desc = "Select language scope",
+            },
+          },
+          selection_modes = {
+            ["@function.outer"] = "V", -- linewise
+            ["@function.inner"] = "V",
+            ["@class.outer"] = "V",
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true,
+          goto_next_start = {
+            ["]m"] = "@function.outer",
+          },
+          goto_next_end = {
+            ["]M"] = "@function.outer",
+          },
+          goto_previous_start = {
+            ["[m"] = "@function.outer",
+          },
+          goto_previous_end = {
+            ["[M"] = "@function.outer",
+          },
+        },
+        lsp_interop = {
+          enable = true,
+          border = "rounded",
+          floating_preview_opts = {},
+          peek_definition_code = {
+            ["gpf"] = "@function.outer",
+            ["gpc"] = "@class.outer",
+          },
+        },
+      },
     },
     config = function(_, opts)
-      require'nvim-treesitter.configs'.setup(opts)
+      require("nvim-treesitter.configs").setup(opts)
 
       -- Repeat movement with ; and ,
-      local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
+      local ts_repeat_move =
+        require "nvim-treesitter.textobjects.repeatable_move"
       vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
-      vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+      vim.keymap.set(
+        { "n", "x", "o" },
+        ",",
+        ts_repeat_move.repeat_last_move_opposite
+      )
 
       -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-      vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
-      vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
-      vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
-      vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
-    end
+      vim.keymap.set(
+        { "n", "x", "o" },
+        "f",
+        ts_repeat_move.builtin_f_expr,
+        { expr = true }
+      )
+      vim.keymap.set(
+        { "n", "x", "o" },
+        "F",
+        ts_repeat_move.builtin_F_expr,
+        { expr = true }
+      )
+      vim.keymap.set(
+        { "n", "x", "o" },
+        "t",
+        ts_repeat_move.builtin_t_expr,
+        { expr = true }
+      )
+      vim.keymap.set(
+        { "n", "x", "o" },
+        "T",
+        ts_repeat_move.builtin_T_expr,
+        { expr = true }
+      )
+    end,
   },
   {
     -- Show current function at the top of the buffer

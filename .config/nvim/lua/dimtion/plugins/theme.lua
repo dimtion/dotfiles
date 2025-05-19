@@ -36,8 +36,8 @@ return {
         FzfLuaPreviewBorder = { fg = "muted", bg = "none" },
         FzfLuaCursorLine = { bg = "pine", blend = 50 },
         FzfLuaFzfCursorLine = { bg = "pine", blend = 30 },
-        FzfLuaPathLineNr = { bg = "pine"},
-        FzfLuaBufFlagCur = { bg = "pine"},
+        FzfLuaPathLineNr = { bg = "pine" },
+        FzfLuaBufFlagCur = { bg = "pine" },
         FzfLuaFzfSeparator = { fg = "gold" },
 
         -- FzfLuaBackdrop = { bg = "foam"},
@@ -48,7 +48,32 @@ return {
         PmenuSel = { fg = "base", bg = "pine" },
         LspInlayHint = { fg = "subtle" },
         GitSignsCurrentLineBlame = { fg = "subtle" },
+
+        NotifyBackground = { bg = "base" },
       },
     },
+  },
+  {
+    "rcarriga/nvim-notify",
+    lazy = false,
+    opts = {
+      timeout = 10000,
+      stages = "static",
+      render = "compact",
+    },
+    keys = {
+      {
+        "<leader>xn", function()
+          require("notify.integrations").pick()
+        end,
+        desc = "List Notifications (fzf)",
+      },
+    },
+    config = function(_, opts)
+      local notify = require("notify")
+      notify.setup(opts)
+
+      vim.notify = notify
+    end
   },
 }

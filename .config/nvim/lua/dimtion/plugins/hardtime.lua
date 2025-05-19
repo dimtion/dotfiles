@@ -12,5 +12,19 @@ return {
       ["<C-N>"] = {},
       ["<C-P>"] = {},
     },
+    hints = {
+      ["0w"] = {
+        message = function()
+          return "Use ^ instead of 0w"
+        end,
+        length = 2,
+      },
+      ["b[cd]t[\"']"] = {
+        message = function(keys)
+          return "Use " .. keys:sub(2, 2) .. "i" .. keys:sub(4, 4) .. " instead of " .. keys
+        end,
+        length = 4,
+      },
+    }
   },
 }

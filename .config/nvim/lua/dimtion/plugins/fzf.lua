@@ -11,7 +11,7 @@ return {
           require("fzf-lua").files()
         end,
         silent = true,
-        desc = "fzf files",
+        desc = "Files (fzf)",
       },
       {
         "<c-f>",
@@ -19,7 +19,7 @@ return {
           require("fzf-lua").grep()
         end,
         silent = true,
-        desc = "fzf grep",
+        desc = "Grep (fzf)",
       },
       {
         "<c-f><c-f>",
@@ -27,7 +27,7 @@ return {
           require("fzf-lua").live_grep_native()
         end,
         silent = true,
-        desc = "fzf live grep",
+        desc = "Live grep (fzf)",
       },
       {
         "<c-s>",
@@ -35,23 +35,7 @@ return {
           require("fzf-lua").lsp_live_workspace_symbols()
         end,
         silent = true,
-        desc = "fzf live lsp workspace symbols",
-      },
-      {
-        "<leader>c",
-        function()
-          require("fzf-lua").commands()
-        end,
-        silent = true,
-        desc = "fzf nvim commands",
-      },
-      {
-        "<leader>k",
-        function()
-          require("fzf-lua").keymaps()
-        end,
-        silent = true,
-        desc = "fzf keymaps",
+        desc = "live lsp workspace symbols (fzf)",
       },
       {
         "//",
@@ -60,7 +44,7 @@ return {
         end,
         mode = "v",
         silent = true,
-        desc = "fzf visual grep",
+        desc = "Grep visual selection (fzf)",
       },
       {
         "<leader>qf",
@@ -69,7 +53,7 @@ return {
         end,
         mode = "n",
         silent = true,
-        desc = "fzf quickfix",
+        desc = "Quickfix (fzf)",
       },
       {
         "<c-m>",
@@ -77,17 +61,32 @@ return {
           require("fzf-lua").marks()
         end,
         silent = true,
-        desc = "fzf marks",
+        desc = "List marks (fzf)",
       },
       {
         "<leader>hh",
-        function()
-          require("fzf-lua").help_tags()
-        end,
+        "<cmd>FzfLua help_tags<cr>",
         silent = true,
-        desc = "fzf help tags",
+        desc = "Neovim help tags (fzf)",
       },
-      { "<leader>gl", "<cmd>FzfLua git_bcommits<cr>", silent = true, desc = "Git log (current buffer)", },
+      {
+        "<leader>hk",
+        "<cmd>FzfLua keymaps<cr>",
+        silent = true,
+        desc = "Neovim keymaps (fzf)",
+      },
+      {
+        "<leader>hc",
+        "<cmd>FzfLua commands<cr>",
+        silent = true,
+        desc = "Neovim commands (fzf)",
+      },
+      {
+        "<leader>gl",
+        "<cmd>FzfLua git_bcommits<cr>",
+        silent = true,
+        desc = "Git log current buffer (fzf)",
+      },
     },
     opts = {
       "border-fused",
@@ -137,7 +136,7 @@ return {
     end,
   },
   {
-    'junegunn/fzf',
+    "junegunn/fzf",
     lazy = "VeryLazy",
     build = ":call fzf#install()",
   },

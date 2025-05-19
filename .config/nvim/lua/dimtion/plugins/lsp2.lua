@@ -32,19 +32,19 @@ return {
       { "gd", vim.lsp.buf.definition, desc = "Go to definition" },
       { "gD", vim.diagnostic.open_float, desc = "Open diagnostic" },
       {
-        "<LocalLeader>lf",
+        "<LocalLeader>ff",
         function()
           vim.lsp.buf.format { async = true }
         end,
-        desc = "Open diagnostic",
+        desc = "Format buffer (lsp)",
       },
       {
-        "<LocalLeader>ld",
+        "<LocalLeader>fd",
         function()
           local bufnr = vim.api.nvim_get_current_buf()
-          local diag = not vim.diagnostic.is_enabled({
+          local diag = not vim.diagnostic.is_enabled {
             bufnr = bufnr,
-          })
+          }
           vim.notify("Buffer LSP diagnostic enabled: " .. tostring(diag))
 
           vim.diagnostic.enable(diag, { bufnr = bufnr })
@@ -53,7 +53,7 @@ return {
         desc = "Toggle buffer LSP diagnostic",
       },
       {
-        "<Leader>lD",
+        "<Leader>ld",
         function()
           local diag = not vim.diagnostic.is_enabled()
           vim.notify("Global LSP diagnostic enabled: " .. tostring(diag))
@@ -70,6 +70,10 @@ return {
   },
   {
     "mason-org/mason.nvim",
+    keys = {
+      { "<leader>lm", "<cmd>Mason<cr>", desc = "Open Mason (LSP package manager)" },
+      { "<leader>lU", "<cmd>MasonUpdate<cr>", desc = "Update Mason packages" },
+    },
     opts = {},
   },
   {

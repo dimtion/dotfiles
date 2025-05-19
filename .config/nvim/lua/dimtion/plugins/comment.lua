@@ -6,7 +6,10 @@ return {
     -- enabled = false,
     -- Does not startup correctly if lazy = true
     lazy = false,
-    keys = "<space>",
+    keys = {
+      "<space>",
+      desc = "Toggle comment",
+    },
     opts = {
       toggler = {
         ---Line-comment toggle keymap

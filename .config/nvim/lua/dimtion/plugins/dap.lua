@@ -1,12 +1,4 @@
 return {
-    {
-    "folke/which-key.nvim",
-    opts = {
-      defaults = {
-        ["<leader>d"] = { name = "+DAP" },
-      },
-    },
-  },
   {
     "mfussenegger/nvim-dap",
     lazy = true,
@@ -54,28 +46,36 @@ return {
       { "<leader>du", function() require("dap").step_out() end, desc = "Step Out", },
     },
     opts = {},
-		config = function(_, opts)
+    config = function(_, opts)
       require("dapui").setup(opts)
       -- automatically open/close the DAP UI when starting/stopping the debugger
-      local dap, dapui = require("dap"), require("dapui")
-      dap.listeners.before.attach.dapui_config = function() dapui.open() end
-      dap.listeners.before.launch.dapui_config = function() dapui.open() end
-      dap.listeners.before.event_terminated.dapui_config = function() dapui.close() end
-      dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
-		end,
+      local dap, dapui = require "dap", require "dapui"
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
+    end,
     dependencies = {
       "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio"
-    }
+      "nvim-neotest/nvim-nio",
+    },
   },
 
   -- Rust configuration:
   {
-    'mrcjkb/rustaceanvim',
-    version = '^6',
+    "mrcjkb/rustaceanvim",
+    version = "^6",
     ft = "rust",
     dependencies = {
       "mfussenegger/nvim-dap",
     },
-  }
+  },
 }

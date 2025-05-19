@@ -8,6 +8,17 @@ return {
     end,
     opts = {
       preset = "helix",
+      spec = {
+        { "<leader>f", group = "File/Buffer" },
+        { "<leader>g", group = "Git" },
+        { "<leader>i", group = "Insert" },
+        { "<leader>l", group = "LSP" },
+        { "<leader>r", group = "Run - Job" },
+        { "<leader>d", group = "Debug - DAP" },
+        { "<leader>h", group = "Help" },
+        { "<leader>x", group = "Extra" },
+        { "<leader>a", group = "AI" },
+      },
     },
   },
 }
