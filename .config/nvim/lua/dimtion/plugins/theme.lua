@@ -64,17 +64,18 @@ return {
     },
     keys = {
       {
-        "<leader>xn", function()
+        "<leader>xn",
+        function()
           require("notify.integrations").pick()
         end,
         desc = "List Notifications (fzf)",
       },
     },
     config = function(_, opts)
-      local notify = require("notify")
+      local notify = require "notify"
       notify.setup(opts)
 
       vim.notify = notify
-    end
+    end,
   },
 }

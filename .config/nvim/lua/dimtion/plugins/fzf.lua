@@ -30,12 +30,12 @@ return {
         desc = "Live grep (fzf)",
       },
       {
-        "<c-s>",
+        "<Leader>ls",
         function()
           require("fzf-lua").lsp_live_workspace_symbols()
         end,
         silent = true,
-        desc = "live lsp workspace symbols (fzf)",
+        desc = "live grep lsp workspace symbols (fzf)",
       },
       {
         "//",

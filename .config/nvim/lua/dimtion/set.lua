@@ -64,13 +64,19 @@ local function fold_virt_text(result, s, lnum, coloff)
 end
 
 function _G.custom_foldtext()
-  local start = vim.fn.getline(vim.v.foldstart):gsub("\t", string.rep(" ", vim.o.tabstop))
+  local start =
+    vim.fn.getline(vim.v.foldstart):gsub("\t", string.rep(" ", vim.o.tabstop))
   local end_str = vim.fn.getline(vim.v.foldend)
   local end_ = vim.trim(end_str)
   local result = {}
   fold_virt_text(result, start, vim.v.foldstart - 1)
   table.insert(result, { " ... ", "Delimiter" })
-  fold_virt_text(result, end_, vim.v.foldend - 1, #(end_str:match("^(%s+)") or ""))
+  fold_virt_text(
+    result,
+    end_,
+    vim.v.foldend - 1,
+    #(end_str:match "^(%s+)" or "")
+  )
   return result
 end
 

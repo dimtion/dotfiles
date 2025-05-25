@@ -9,10 +9,34 @@ return {
     version = "*",
     lazy = false,
     keys = {
-      { "mm", "<cmd>RecallToggle<cr>", silent = true, noremap = true, desc = "Toggle recall mark" },
-      { "mn", "<cmd>RecallNext<cr>", silent = true, noremap = true, desc = "Next recall mark" },
-      { "mp", "<cmd>RecallPrevious<cr>", silent = true, noremap = true, desc = "Previous recall mark" },
-      { "mc", "<cmd>RecallClear<cr>", silent = true, noremap = true, desc = "Clear recall marks" },
+      {
+        "mm",
+        "<cmd>RecallToggle<cr>",
+        silent = true,
+        noremap = true,
+        desc = "Toggle recall mark",
+      },
+      {
+        "mn",
+        "<cmd>RecallNext<cr>",
+        silent = true,
+        noremap = true,
+        desc = "Next recall mark",
+      },
+      {
+        "mp",
+        "<cmd>RecallPrevious<cr>",
+        silent = true,
+        noremap = true,
+        desc = "Previous recall mark",
+      },
+      {
+        "mc",
+        "<cmd>RecallClear<cr>",
+        silent = true,
+        noremap = true,
+        desc = "Clear recall marks",
+      },
     },
     opts = {},
     -- config = function(_, opts)
@@ -20,5 +44,5 @@ return {
     --
     --   recall.setup({})
     -- end
-  }
+  },
 }

@@ -27,6 +27,13 @@ return {
     templates = {
       "builtin",
     },
+    task_list = {
+      bindings = {
+        ["<C-k>"] = false,
+        ["<C-l>"] = false,
+        ["<C-h>"] = false,
+      },
+    },
   },
   config = function(_, opts)
     local overseer = require "overseer"

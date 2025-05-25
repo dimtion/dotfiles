@@ -1,22 +1,22 @@
 --- Single hotkey to open/switch/close nvim-tree
 local nvimTreeFocusOrToggle = function()
-  local nvimTree = require("nvim-tree.api")
+  local nvimTree = require "nvim-tree.api"
   local currentBuf = vim.api.nvim_get_current_buf()
-  local currentBufFt = vim.api.nvim_get_option_value("filetype",
-    { buf = currentBuf })
+  local currentBufFt =
+    vim.api.nvim_get_option_value("filetype", { buf = currentBuf })
   if currentBufFt == "NvimTree" then
     nvimTree.tree.toggle()
   else
     nvimTree.tree.focus()
-    nvimTree.tree.find_file({ buf = currentBuf })
+    nvimTree.tree.find_file { buf = currentBuf }
   end
 end
 
 --- Make :bd and :q behave as usual when tree is visible
-vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "QuitPre" }, {
   nested = false,
   callback = function(e)
-    local tree = require('nvim-tree.api').tree
+    local tree = require("nvim-tree.api").tree
 
     -- Nothing to do if tree is not opened
     if not tree.is_visible() then
@@ -32,22 +32,22 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'QuitPre' }, {
     end
 
     -- We want to quit and only one window besides tree is left
-    if e.event == 'QuitPre' and winCount == 2 then
-      vim.api.nvim_cmd({ cmd = 'qall' }, {})
+    if e.event == "QuitPre" and winCount == 2 then
+      vim.api.nvim_cmd({ cmd = "qall" }, {})
     end
 
     -- :bd was probably issued an only tree window is left
     -- Behave as if tree was closed (see `:h :bd`)
-    if e.event == 'BufEnter' and winCount == 1 then
+    if e.event == "BufEnter" and winCount == 1 then
       -- Required to avoid "Vim:E444: Cannot close last window"
       vim.defer_fn(function()
         -- close nvim-tree: will go to the last buffer used before closing
-        tree.toggle({ find_file = true, focus = true })
+        tree.toggle { find_file = true, focus = true }
         -- re-open nivm-tree
-        tree.toggle({ find_file = true, focus = false })
+        tree.toggle { find_file = true, focus = false }
       end, 10)
     end
-  end
+  end,
 })
 
 return {
@@ -108,14 +108,20 @@ return {
         end
 
         local function opts(desc)
-          return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          return {
+            desc = "nvim-tree: " .. desc,
+            buffer = bufnr,
+            noremap = true,
+            silent = true,
+            nowait = true,
+          }
         end
 
         api.config.mappings.default_on_attach(bufnr)
-        vim.keymap.set("n", "l", edit_or_open, opts("Edit Or Open"))
-        vim.keymap.set("n", "L", preview, opts("Vsplit Preview"))
-        vim.keymap.set("n", "h", collapse_parent, opts("Collapse Parent"))
-        vim.keymap.set("n", "H", api.tree.collapse_all, opts("Collapse All"))
+        vim.keymap.set("n", "l", edit_or_open, opts "Edit Or Open")
+        vim.keymap.set("n", "L", preview, opts "Vsplit Preview")
+        vim.keymap.set("n", "h", collapse_parent, opts "Collapse Parent")
+        vim.keymap.set("n", "H", api.tree.collapse_all, opts "Collapse All")
       end,
     },
     keys = {
@@ -124,7 +130,7 @@ return {
         nvimTreeFocusOrToggle,
         silent = true,
         noremap = true,
-        desc = "Toggle file tree"
+        desc = "Toggle file tree",
       },
       {
         "<c-a>",

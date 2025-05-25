@@ -53,6 +53,16 @@ return {
         desc = "Toggle buffer LSP diagnostic",
       },
       {
+        "<Leader>li",
+        "<cmd>LspInfo<cr>",
+        desc = "LspInfo",
+      },
+      {
+        "<Leader>lL",
+        "<cmd>LspLog<cr>",
+        desc = "Open Lsp Logs",
+      },
+      {
         "<Leader>ld",
         function()
           local diag = not vim.diagnostic.is_enabled()
@@ -71,7 +81,11 @@ return {
   {
     "mason-org/mason.nvim",
     keys = {
-      { "<leader>lm", "<cmd>Mason<cr>", desc = "Open Mason (LSP package manager)" },
+      {
+        "<leader>lm",
+        "<cmd>Mason<cr>",
+        desc = "Open Mason (LSP package manager)",
+      },
       { "<leader>lU", "<cmd>MasonUpdate<cr>", desc = "Update Mason packages" },
     },
     opts = {},

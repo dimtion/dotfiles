@@ -12,8 +12,10 @@ vim.keymap.set("n", "<c-j>", "<c-w><c-j>")
 vim.keymap.set("n", "<c-k>", "<c-w><c-k>")
 vim.keymap.set("n", "<c-l>", "<c-w><c-l>")
 
--- Open new tab
-vim.keymap.set("n", "<c-t>", "<cmd>tabnew<cr>", { desc = "Open new tab" })
+-- Open buffer
+vim.keymap.set("n", "<c-t>", "<cmd>tabnew<cr>", { desc = "New tab" })
+vim.keymap.set("n", "<c-s>", "<cmd>split<cr>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<c-v>", "<cmd>vsplit<cr>", { desc = "Vertical split" })
 
 -- Enable paste mode
 vim.keymap.set(
@@ -35,6 +37,21 @@ vim.keymap.set(
   "<localleader>Y",
   [["+Y]],
   { desc = "Yank to system clipboard (linewise)" }
+)
+
+-- Yank filepath to the system clipboard
+vim.keymap.set(
+  "n",
+  "<LocalLeader>fp",
+  "<cmd>let @+=expand('%:p')<cr>",
+  { desc = "Yank absolute buffer path to clipboard" }
+)
+
+vim.keymap.set(
+  "n",
+  "<LocalLeader>fP",
+  "<cmd>let @+=expand('%')<cr>",
+  { desc = "Yank relateive buffer path to clipboard" }
 )
 
 -- map p in visual mode replace the selected text with the yank register
@@ -64,9 +81,21 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 -- New file
-vim.keymap.set("n", "<leader>fn", "<cmd>enew<cr>",
-{ noremap = true, silent = true, desc = "New unnamed buffer" })
-vim.keymap.set("n", "<leader>fw", "<cmd>w<cr>",
-{ noremap = true, silent = true, desc = "Buffer write" })
-vim.keymap.set("n", "<leader>fx", "<cmd>x<cr>",
-{ noremap = true, silent = true, desc = "Buffer write and exit" })
+vim.keymap.set(
+  "n",
+  "<leader>fn",
+  "<cmd>enew<cr>",
+  { noremap = true, silent = true, desc = "New unnamed buffer" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>fw",
+  "<cmd>w<cr>",
+  { noremap = true, silent = true, desc = "Buffer write" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>fx",
+  "<cmd>x<cr>",
+  { noremap = true, silent = true, desc = "Buffer write and exit" }
+)
