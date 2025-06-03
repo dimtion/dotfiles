@@ -135,9 +135,24 @@ return {
         "<leader>gY",
         "<cmd>GitLink!<cr>",
         mode = { "n", "v" },
-        desc = "Open git repo link",
+        desc = "Open git repo link!",
       },
     },
     opts = {},
+  },
+  {
+    "sindrets/diffview.nvim",
+    -- enabled = false,
+    commands = { "DiffviewFileHistory", "DiffviewOpen", "DiffviewLog", "DiffviewRefresh" },
+    keys = {
+      "<leader>gD",
+      function()
+        if next(require('diffview.lib').views) == nil then
+          vim.cmd('DiffviewOpen')
+        else
+          vim.cmd('DiffviewClose')
+        end
+      end,
+    }
   },
 }

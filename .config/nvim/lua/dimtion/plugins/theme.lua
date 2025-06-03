@@ -50,6 +50,7 @@ return {
         GitSignsCurrentLineBlame = { fg = "subtle" },
 
         NotifyBackground = { bg = "base" },
+        DiffDelete = { fg = "muted", bg = "surface", blend = 50 },
       },
     },
   },

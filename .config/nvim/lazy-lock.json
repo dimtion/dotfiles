@@ -4,6 +4,7 @@
   "blink.cmp": { "branch": "main", "commit": "022521a8910a5543b0251b21c9e1a1e989745796" },
   "codecompanion-history.nvim": { "branch": "main", "commit": "36f1a611a2bed70b57a50c877ffc50bdb74c9d23" },
   "codecompanion.nvim": { "branch": "main", "commit": "c738cada5027d86ca71cf429139797273762f037" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dropbar.nvim": { "branch": "master", "commit": "f7ecb0c3600ca1dc467c361e9af40f97289d7aad" },
   "friendly-snippets": { "branch": "main", "commit": "572f5660cf05f8cd8834e096d7b4c921ba18e175" },
   "fzf": { "branch": "master", "commit": "d18c0bf6948b4707684fe77631aff26a17cbc4fa" },

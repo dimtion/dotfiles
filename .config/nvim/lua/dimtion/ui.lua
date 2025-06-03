@@ -38,3 +38,5 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.textwidth = 80
   end,
 })
+
+vim.opt.fillchars:append { diff = "╱" }
