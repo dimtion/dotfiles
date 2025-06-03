@@ -143,16 +143,23 @@ return {
   {
     "sindrets/diffview.nvim",
     -- enabled = false,
-    commands = { "DiffviewFileHistory", "DiffviewOpen", "DiffviewLog", "DiffviewRefresh" },
+    commands = {
+      "DiffviewFileHistory",
+      "DiffviewOpen",
+      "DiffviewLog",
+      "DiffviewRefresh",
+    },
     keys = {
-      "<leader>gD",
-      function()
-        if next(require('diffview.lib').views) == nil then
-          vim.cmd('DiffviewOpen')
-        else
-          vim.cmd('DiffviewClose')
-        end
-      end,
-    }
+      {
+        "<leader>gD",
+        function()
+          if next(require("diffview.lib").views) == nil then
+            vim.cmd "DiffviewOpen"
+          else
+            vim.cmd "DiffviewClose"
+          end
+        end,
+      },
+    },
   },
 }
