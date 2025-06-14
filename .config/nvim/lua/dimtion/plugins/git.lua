@@ -143,7 +143,7 @@ return {
   {
     "sindrets/diffview.nvim",
     -- enabled = false,
-    commands = {
+    cmd = {
       "DiffviewFileHistory",
       "DiffviewOpen",
       "DiffviewLog",
