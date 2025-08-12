@@ -48,7 +48,7 @@ return {
           },
           schema = {
             model = {
-              default = "bedrock/claude-sonnet", -- define llm model to be used
+              default = "bedrock/claude-sonnet-4", -- define llm model to be used
             },
           },
         })
