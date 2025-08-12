@@ -7,6 +7,7 @@ return {
     "ibhagwan/fzf-lua",
     "ravitemer/mcphub.nvim",
     "ravitemer/codecompanion-history.nvim",
+    "j-hui/fidget.nvim",
   },
   cmd = {
     "CodeCompanion",
@@ -24,11 +25,36 @@ return {
       silent = true,
       mode = { "n", "v" },
     },
+    {
+      "<leader>ai",
+      "<cmd>CodeCompanion<cr>",
+      desc = "Trigger inline Codecompanion",
+      noremap = true,
+      silent = true,
+      mode = { "n", "v" },
+    },
   },
   opts = {
     strategies = {
       chat = {
         adapter = "owui",
+        slash_commands = {
+          ["buffer"] = {
+            keymaps = {
+              modes = {
+                i = "<C-b>",
+                n = { "<localleader>ab" }
+              },
+            },
+          },
+          ["file"] = {
+            keymaps = {
+              modes = {
+                n = { "<localleader>af" }
+              },
+            },
+          },
+        },
       },
       inline = {
         adapter = "owui",
@@ -88,4 +114,8 @@ return {
       },
     },
   },
+  init = function()
+    require("dimtion.plugins.codecompanion.fidget-spinner"):init()
+    require("dimtion.plugins.codecompanion.inline-extmark"):setup()
+  end,
 }

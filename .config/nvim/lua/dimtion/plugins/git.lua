@@ -127,13 +127,13 @@ return {
     keys = {
       {
         "<leader>gy",
-        "<cmd>GitLink<cr>",
+        "<cmd>GitLink remote=origin<cr>",
         mode = { "n", "v" },
         desc = "Yank git repo link",
       },
       {
         "<leader>gY",
-        "<cmd>GitLink!<cr>",
+        "<cmd>GitLink! remote=origin<cr>",
         mode = { "n", "v" },
         desc = "Open git repo link!",
       },

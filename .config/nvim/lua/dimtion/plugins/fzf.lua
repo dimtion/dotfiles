@@ -47,6 +47,15 @@ return {
         desc = "Grep visual selection (fzf)",
       },
       {
+        "//",
+        function()
+          require("fzf-lua").grep_cword()
+        end,
+        mode = "n",
+        silent = true,
+        desc = "Grep word under cursor (fzf)",
+      },
+      {
         "<leader>qf",
         function()
           require("fzf-lua").quickfix()

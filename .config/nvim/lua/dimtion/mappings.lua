@@ -15,7 +15,7 @@ vim.keymap.set("n", "<c-l>", "<c-w><c-l>")
 -- Open buffer
 vim.keymap.set("n", "<c-t>", "<cmd>tabnew<cr>", { desc = "New tab" })
 vim.keymap.set("n", "<c-s>", "<cmd>split<cr>", { desc = "Horizontal split" })
-vim.keymap.set("n", "<c-v>", "<cmd>vsplit<cr>", { desc = "Vertical split" })
+-- vim.keymap.set("n", "<c-v>", "<cmd>vsplit<cr>", { desc = "Vertical split" })
 
 -- Enable paste mode
 vim.keymap.set(
