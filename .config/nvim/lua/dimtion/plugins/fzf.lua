@@ -94,6 +94,9 @@ return {
         desc = "Git log current buffer (fzf)",
       },
     },
+    cmd = {
+      "FzfLua"
+    },
     opts = {
       "border-fused",
       -- preview={default="down"}

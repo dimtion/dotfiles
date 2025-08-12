@@ -1,5 +1,6 @@
 return {
   "chentoast/marks.nvim",
+  enabled = false,
   event = "VeryLazy",
   opts = {
     default_mapping = false,
@@ -7,6 +8,7 @@ return {
   {
     "fnune/recall.nvim",
     version = "*",
+    enabled = false,
     lazy = false,
     keys = {
       {

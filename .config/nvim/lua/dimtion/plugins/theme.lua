@@ -51,6 +51,10 @@ return {
 
         NotifyBackground = { bg = "base" },
         DiffDelete = { fg = "muted", bg = "surface", blend = 50 },
+
+        GutterMarksLocal = { fg = "muted" },
+        GutterMarksGlobal = { fg = "muted" },
+        GutterMarksSpecial = { fg = "muted" },
       },
     },
   },
