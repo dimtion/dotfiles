@@ -11,7 +11,7 @@
 return {
   {
     "mbbill/undotree",
-    enabled = true,
+    -- enabled = false,
     lazy = true,
     keys = {
       {
