@@ -43,14 +43,14 @@ return {
             keymaps = {
               modes = {
                 i = "<C-b>",
-                n = { "<localleader>ab" }
+                n = { "<localleader>ab" },
               },
             },
           },
           ["file"] = {
             keymaps = {
               modes = {
-                n = { "<localleader>af" }
+                n = { "<localleader>af" },
               },
             },
           },

@@ -8,12 +8,12 @@ local M = {}
 
 --- @type CodeCompanion.InlineExtmark
 local default_opts = {
-  unique_line_sign_text = '',
-  first_line_sign_text = '┌',
-  last_line_sign_text = '└',
+  unique_line_sign_text = "",
+  first_line_sign_text = "┌",
+  last_line_sign_text = "└",
   extmark = {
-    sign_hl_group = 'DiagnosticWarn',
-    sign_text = '│',
+    sign_hl_group = "DiagnosticWarn",
+    sign_text = "│",
     priority = 1000,
   },
 }
@@ -30,7 +30,7 @@ local function set_line_extmark(bufnr, ns_id, line_num, opts, sign_type)
     ns_id,
     line_num - 1, -- Convert to 0-based index
     0,
-    vim.tbl_deep_extend('force', opts.extmark or {}, {
+    vim.tbl_deep_extend("force", opts.extmark or {}, {
       sign_text = opts[sign_type] or opts.extmark.sign_text,
     })
   )
@@ -46,12 +46,24 @@ local function create_extmarks(opts, data, ns_id)
 
   -- Handle the case where start and end lines are the same (unique line)
   if context.start_line == context.end_line then
-    set_line_extmark(context.bufnr, ns_id, context.start_line, opts, 'unique_line_sign_text')
+    set_line_extmark(
+      context.bufnr,
+      ns_id,
+      context.start_line,
+      opts,
+      "unique_line_sign_text"
+    )
     return
   end
 
   -- Set extmark for the first line with special options
-  set_line_extmark(context.bufnr, ns_id, context.start_line, opts, 'first_line_sign_text')
+  set_line_extmark(
+    context.bufnr,
+    ns_id,
+    context.start_line,
+    opts,
+    "first_line_sign_text"
+  )
 
   -- Set extmarks for the middle lines with standard options
   for i = context.start_line + 1, context.end_line - 1 do
@@ -60,25 +72,32 @@ local function create_extmarks(opts, data, ns_id)
 
   -- Set extmark for the last line with special options
   if context.end_line > context.start_line then
-    set_line_extmark(context.bufnr, ns_id, context.end_line, opts, 'last_line_sign_text')
+    set_line_extmark(
+      context.bufnr,
+      ns_id,
+      context.end_line,
+      opts,
+      "last_line_sign_text"
+    )
   end
 end
 
 --- Creates autocmds for CodeCompanionRequest events
 --- @param opts CodeCompanion.InlineExtmark Configuration options passed from setup
 local function create_autocmds(opts)
-  vim.api.nvim_create_autocmd({ 'User' }, {
-    pattern = { 'CodeCompanionRequest*' },
+  vim.api.nvim_create_autocmd({ "User" }, {
+    pattern = { "CodeCompanionRequest*" },
     callback =
       --- @param args {buf: number, data : CodeCompanion.InlineArgs, match: string}
       function(args)
         local data = args.data or {}
         local context = data and data.context or {}
         if data and data.context then
-          local ns_id = vim.api.nvim_create_namespace('CodeCompanionInline_' .. data.id)
-          if args.match:find('StartedInline') then
+          local ns_id =
+            vim.api.nvim_create_namespace("CodeCompanionInline_" .. data.id)
+          if args.match:find "StartedInline" then
             create_extmarks(opts, data, ns_id)
-          elseif args.match:find('FinishedInline') then
+          elseif args.match:find "FinishedInline" then
             vim.api.nvim_buf_clear_namespace(context.bufnr, ns_id, 0, -1)
           end
         end
@@ -87,6 +106,8 @@ local function create_autocmds(opts)
 end
 
 --- @param opts? CodeCompanion.InlineExtmark Optional configuration to override defaults
-function M.setup(opts) create_autocmds(vim.tbl_deep_extend('force', default_opts, opts or {})) end
+function M.setup(opts)
+  create_autocmds(vim.tbl_deep_extend("force", default_opts, opts or {}))
+end
 
 return M

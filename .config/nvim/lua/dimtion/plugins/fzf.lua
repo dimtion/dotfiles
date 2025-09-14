@@ -104,7 +104,7 @@ return {
       },
     },
     cmd = {
-      "FzfLua"
+      "FzfLua",
     },
     opts = {
       "border-fused",

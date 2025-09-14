@@ -21,32 +21,56 @@ map("n", "<c-w>t", "<cmd>tabnew<cr>", { desc = "New tab" })
 --
 -- File & Buffer
 --
-map("n", "<leader>fn", "<cmd>enew<cr>",
+map(
+  "n",
+  "<leader>fn",
+  "<cmd>enew<cr>",
   { noremap = true, silent = true, desc = "New unnamed buffer" }
 )
-map("n", "<leader>fw", "<cmd>w<cr>",
+map(
+  "n",
+  "<leader>fw",
+  "<cmd>w<cr>",
   { noremap = true, silent = true, desc = "Buffer write" }
 )
-map("n", "<leader>fx", "<cmd>x<cr>",
+map(
+  "n",
+  "<leader>fx",
+  "<cmd>x<cr>",
   { noremap = true, silent = true, desc = "Buffer write and exit" }
 )
-map("n", "<LocalLeader>fp", "<cmd>let @+=expand('%:p')<cr>",
+map(
+  "n",
+  "<LocalLeader>fp",
+  "<cmd>let @+=expand('%:p')<cr>",
   { desc = "Yank absolute buffer path to clipboard" }
 )
-map("n", "<LocalLeader>fP", "<cmd>let @+=expand('%')<cr>",
+map(
+  "n",
+  "<LocalLeader>fP",
+  "<cmd>let @+=expand('%')<cr>",
   { desc = "Yank relative buffer path to clipboard" }
 )
 
 --
 -- Yank / paste
 --
-map("n", "<localleader>xp", "<cmd>set invpaste paste?<cr>",
+map(
+  "n",
+  "<localleader>xp",
+  "<cmd>set invpaste paste?<cr>",
   { desc = "Toggle paste mode" }
 )
-map({ "n", "v" }, "<localleader>y", [["+y]],
+map(
+  { "n", "v" },
+  "<localleader>y",
+  [["+y]],
   { desc = "Yank to system clipboard (selection)" }
 )
-map("n", "<localleader>Y", [["+Y]],
+map(
+  "n",
+  "<localleader>Y",
+  [["+Y]],
   { desc = "Yank to system clipboard (linewise)" }
 )
 
