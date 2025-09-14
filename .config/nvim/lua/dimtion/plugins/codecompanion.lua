@@ -67,14 +67,14 @@ return {
       owui = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
           env = {
-            url = "cmd: echo $OWUI_URL",
-            api_key = "cmd: echo $OWUI_API_KEY",
+            url = "cmd: cat ~/.config/sops-nix/secrets/oai/url",
+            api_key = "cmd: cat ~/.config/sops-nix/secrets/oai/key",
             chat_url = "/api/chat/completions",
             models_endpoint = "/api/models",
           },
           schema = {
             model = {
-              default = "bedrock/claude-sonnet-4", -- define llm model to be used
+              default = "bedrock/claude-sonnet-4",
             },
           },
         })
