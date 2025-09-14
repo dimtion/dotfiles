@@ -13,13 +13,19 @@ return {
     "mbbill/undotree",
     -- enabled = false,
     lazy = true,
+    cmd = {
+      "UndotreeToggle",
+    },
     keys = {
       {
         "<leader>u",
-        function()
-          vim.cmd.UndotreeToggle()
-        end,
+        "<cmd>UndotreeToggle<cr>",
         desc = "Show nvim undotree",
+      },
+      {
+        "<leader>fh",
+        "<cmd>UndotreeToggle<cr>",
+        desc = "Show nvim undotree (file history)",
       },
       config = true,
     },

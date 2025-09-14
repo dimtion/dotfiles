@@ -4,6 +4,6 @@ return {
   dev = true,
   event = "VeryLazy",
   config = {
-    special_mark = { enabled = true },
+    -- special_mark = { enabled = true },
   },
 }

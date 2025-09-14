@@ -64,21 +64,23 @@ return {
       },
     },
     adapters = {
-      owui = function()
-        return require("codecompanion.adapters").extend("openai_compatible", {
-          env = {
-            url = "cmd: cat ~/.config/sops-nix/secrets/oai/url",
-            api_key = "cmd: cat ~/.config/sops-nix/secrets/oai/key",
-            chat_url = "/api/chat/completions",
-            models_endpoint = "/api/models",
-          },
-          schema = {
-            model = {
-              default = "bedrock/claude-sonnet-4",
+      http = {
+        owui = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              url = "cmd: cat ~/.config/sops-nix/secrets/oai/url",
+              api_key = "cmd: cat ~/.config/sops-nix/secrets/oai/key",
+              chat_url = "/api/chat/completions",
+              models_endpoint = "/api/models",
             },
-          },
-        })
-      end,
+            schema = {
+              model = {
+                default = "bedrock/claude-sonnet-4",
+              },
+            },
+          })
+        end,
+      },
     },
     extensions = {
       mcphub = {

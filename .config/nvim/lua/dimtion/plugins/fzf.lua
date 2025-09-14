@@ -8,7 +8,7 @@ return {
       {
         "<c-p>",
         function()
-          require("fzf-lua").files()
+          require("fzf-lua").global()
         end,
         silent = true,
         desc = "Files (fzf)",
@@ -47,7 +47,7 @@ return {
         desc = "Grep visual selection (fzf)",
       },
       {
-        "//",
+        "**",
         function()
           require("fzf-lua").grep_cword()
         end,
@@ -102,11 +102,18 @@ return {
         silent = true,
         desc = "Git log current buffer (fzf)",
       },
+      {
+        "<c-\\>",
+        "<cmd>FzfLua resume<cr>",
+        silent = true,
+        desc = "Resume FzfLua",
+      },
     },
     cmd = {
       "FzfLua",
     },
     opts = {
+      "hide",
       "border-fused",
       -- preview={default="down"}
       -- fzf_opts = {
