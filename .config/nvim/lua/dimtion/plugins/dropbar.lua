@@ -1,6 +1,10 @@
+-- IDE style bread crumb
+-- Disabled for now as I realized I don't use it much these days.
+-- Keeping the config while I test without
 return {
   {
     "Bekaboo/dropbar.nvim",
+    enabled = false,
     opts = {
       bar = {
         sources = function(buf, _)

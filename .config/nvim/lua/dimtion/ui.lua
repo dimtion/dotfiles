@@ -39,4 +39,23 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.opt.fillchars:append { diff = "╱" }
+vim.opt.fillchars:append {
+  diff = "╱",
+  eob = " ",
+  vert = " ",
+}
+
+-- Only show cursorline in current buffer
+vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
+  group = "CursorLine",
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
+vim.api.nvim_create_autocmd("WinLeave", {
+  group = "CursorLine",
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})

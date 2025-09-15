@@ -26,12 +26,13 @@ return {
 
         -- Blend colours against the "base" background
         CursorLine = { bg = "pine", blend = 30 },
+        CursorLineNr = { bg = "pine", blend = 10 },
         -- StatusLine = { fg = "base", bg = "rose", blend = 90 },
         -- StatusLineNC = { bg = "rose", blend = 10 },
         FloatBorder = { fg = "muted", bg = "none" },
         NormalFloat = { fg = "text", bg = "none" },
-        FzfLuaTitle = { fg = "gold", bg = "none" },
 
+        FzfLuaTitle = { fg = "gold", bg = "none" },
         FzfLuaBorder = { fg = "muted", bg = "none" },
         FzfLuaPreviewBorder = { fg = "muted", bg = "none" },
         FzfLuaCursorLine = { bg = "pine", blend = 50 },
@@ -52,9 +53,15 @@ return {
         NotifyBackground = { bg = "base" },
         DiffDelete = { fg = "muted", bg = "surface", blend = 50 },
 
+        MiniIndentscopeSymbol = { fg = "highlight_med", blend = 10 },
+
         GutterMarksLocal = { fg = "muted" },
         GutterMarksGlobal = { fg = "muted" },
         GutterMarksSpecial = { fg = "muted" },
+
+        TabLineFill = { bg = "base" },
+        TabLine = { bg = "base" },
+        TabLineSel = { bg = "base" },
       },
     },
   },

@@ -25,6 +25,7 @@ vim.opt.cursorline = true
 vim.opt.ruler = true
 vim.opt.showcmd = true
 vim.opt.laststatus = 2
+vim.opt.statusline = " %f %m %= %l:%c "
 
 -- Command bar
 vim.opt.wildmenu = true
