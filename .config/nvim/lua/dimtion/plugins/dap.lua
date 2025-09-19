@@ -5,6 +5,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    lazy = true,
     opts = {
       handlers = {},
     },
@@ -14,6 +15,7 @@ return {
     },
   },
   {
+    lazy = true,
     "theHamsta/nvim-dap-virtual-text",
     config = true,
     dependencies = {
@@ -66,6 +68,8 @@ return {
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
+      "jay-babu/mason-nvim-dap.nvim",
+      "theHamsta/nvim-dap-virtual-text",
     },
   },
 

@@ -4,11 +4,16 @@ return {
   {
     "numToStr/Comment.nvim",
     -- enabled = false,
-    -- Does not startup correctly if lazy = true
-    lazy = false,
     keys = {
-      "<space>",
-      desc = "Toggle comment",
+      {
+        "<space>",
+        desc = "Toggle comment",
+      },
+      {
+        "<space>",
+        mode = "v",
+        desc = "Toggle comment",
+      },
     },
     opts = {
       toggler = {

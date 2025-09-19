@@ -78,10 +78,12 @@ return {
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "andythigpen/nvim-coverage",
     },
   },
   {
     "andythigpen/nvim-coverage",
+    lazy = true,
     -- version = "*",
     config = function()
       require("coverage").setup {

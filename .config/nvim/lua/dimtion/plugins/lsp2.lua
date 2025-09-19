@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 return {
   {
     "neovim/nvim-lspconfig",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "mason-org/mason.nvim",
@@ -80,6 +80,8 @@ return {
   },
   {
     "mason-org/mason.nvim",
+    cmd = "Mason",
+    build = ":MasonUpdate",
     keys = {
       {
         "<leader>lm",
@@ -97,11 +99,13 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
+    cmd = "LazyDev",
     opts = {
       library = {
         -- See the configuration section for more details
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "lazy.nvim", words = { "LazyVim" } },
       },
     },
   },

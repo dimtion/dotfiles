@@ -5,6 +5,6 @@ return {
     "kevinhwang91/nvim-bqf",
     dependencies = { "junegunn/fzf" },
     -- enabled = false,
-    filetype = { "qf" },
+    ft = { "qf" },
   },
 }
