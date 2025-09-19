@@ -1,14 +1,11 @@
 vim.api.nvim_set_hl(0, "LspInlayHint", { italic = true })
 
+-- TODO: implement background theme swith using
+-- [#31350](https://github.com/neovim/neovim/pull/31350)
+-- [DEC mode 2031](https://contour-terminal.org/vt-extensions/color-palette-update-notifications/)
+-- autocmd OptionSet background
+
 return {
-  -- Web icons
-  { "nvim-tree/nvim-web-devicons", lazy = false, priority = 1002 },
-
-  -- Follow system dark/light mode using SIGWING
-  -- Lumen is very slow... and not working.. disabling it..
-  -- { "vimpostor/vim-lumen", lazy = false, priority = 1001 },
-
-  -- rose-pine theme
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -21,6 +18,11 @@ return {
       groups = {
         -- border = { fg = "muted", bg = "none" },
         panel = "overlay",
+      },
+      palette = {
+        main = {
+          base = "#111019",
+        },
       },
       highlight_groups = {
 

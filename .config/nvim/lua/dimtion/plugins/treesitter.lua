@@ -22,10 +22,6 @@ return {
     event = { "VeryLazy" },
     cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
     opts = {
-      -- Install parsers synchronously (only applied to `ensure_installed`)
-      sync_install = false,
-
-      -- A list of parser names, or "all"
       ensure_installed = {
         "bash",
         "c",
