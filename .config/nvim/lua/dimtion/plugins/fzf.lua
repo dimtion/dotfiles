@@ -103,6 +103,18 @@ return {
         desc = "Git log current buffer (fzf)",
       },
       {
+        "<leader>fj",
+        "<cmd>FzfLua jumps<cr>",
+        silent = true,
+        desc = "Jump list (fzf)",
+      },
+      {
+        "grr",
+        "<cmd>FzfLua lsp_references<cr>",
+        silent = true,
+        desc = "LSP References (fzf)",
+      },
+      {
         "<c-\\>",
         "<cmd>FzfLua resume<cr>",
         silent = true,
