@@ -21,7 +21,7 @@ return {
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 50,
-        window = { border = "padded" }
+        window = { border = "padded" },
       },
       ghost_text = {
         enabled = true,
@@ -32,17 +32,17 @@ return {
           treesitter = { "lsp" },
           columns = {
             { "kind_icon", "label", "label_description", gap = 1 },
-            { "source_name" }
+            { "source_name" },
           },
         },
-      }
+      },
     },
 
     sources = {
       default = { "lsp", "path", "snippets", "buffer", "tmux" },
       per_filetype = {
         codecompanion = { "codecompanion" },
-        lua = { inherit_defaults = true, "lazydev" }
+        lua = { inherit_defaults = true, "lazydev" },
       },
       providers = {
         lsp = {
@@ -67,8 +67,8 @@ return {
           score_offset = -15,
           transform_items = function(ctx, items)
             for _, item in ipairs(items) do
-              item.kind_icon = ''
-              item.kind_name = 'Tmux'
+              item.kind_icon = ""
+              item.kind_name = "Tmux"
             end
             return items
           end,
@@ -78,7 +78,7 @@ return {
 
     signature = {
       enabled = true,
-      window = { border = 'padded' }
+      window = { border = "padded" },
     },
     cmdline = {
       keymap = { preset = "default" },

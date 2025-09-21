@@ -18,7 +18,7 @@ return {
       "<leader>mq",
       function()
         require("guttermarks.actions").marks_to_quickfix()
-        vim.cmd("FzfLua quickfix")
+        vim.cmd "FzfLua quickfix"
         -- vim.cmd("copen")
       end,
       desc = "delete mark on current line",
