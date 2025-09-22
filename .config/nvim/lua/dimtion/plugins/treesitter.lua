@@ -55,7 +55,9 @@ return {
       TS.install(opts.ensure_installed)
 
       -- Auto-install and start parsers for any buffer
+      vim.api.nvim_create_augroup("dimtion.ts", { clear = true })
       vim.api.nvim_create_autocmd({ "BufRead" }, {
+        group = "dimtion.ts",
         callback = function(event)
           local bufnr = event.buf
           local filetype =

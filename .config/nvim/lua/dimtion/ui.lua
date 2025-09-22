@@ -30,7 +30,9 @@ vim.cmd "colorscheme rose-pine"
 vim.cmd "set background=dark"
 
 -- Enable word wrap for Markdown files
+vim.api.nvim_create_augroup("dimtion.wrap", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
+  group = "dimtion.wrap",
   pattern = "markdown",
   callback = function()
     vim.opt_local.wrap = true
@@ -46,15 +48,15 @@ vim.opt.fillchars:append {
 }
 
 -- Only show cursorline in current buffer
-vim.api.nvim_create_augroup("CursorLine", { clear = true })
+vim.api.nvim_create_augroup("dimtion.CursorLine", { clear = true })
 vim.api.nvim_create_autocmd({ "VimEnter", "WinEnter", "BufWinEnter" }, {
-  group = "CursorLine",
+  group = "dimtion.CursorLine",
   callback = function()
     vim.opt_local.cursorline = true
   end,
 })
 vim.api.nvim_create_autocmd("WinLeave", {
-  group = "CursorLine",
+  group = "dimtion.CursorLine",
   callback = function()
     vim.opt_local.cursorline = false
   end,

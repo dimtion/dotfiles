@@ -82,3 +82,14 @@ function _G.custom_foldtext()
 end
 
 vim.opt.foldtext = "v:lua.custom_foldtext()"
+
+-- Spell check
+vim.api.nvim_create_augroup("dimtion.spell", { clear = true })
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  group = "dimtion.spell",
+  pattern = { "*.md", "*.txt", "gitcommit" },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = "en_us"
+  end,
+})
