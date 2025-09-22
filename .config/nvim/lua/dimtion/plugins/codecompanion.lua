@@ -116,7 +116,8 @@ return {
       },
     },
   },
-  init = function()
+  config = function(_, opts)
+    require("codecompanion").setup(opts)
     require("dimtion.plugins.codecompanion.fidget-spinner"):init()
     require("dimtion.plugins.codecompanion.inline-extmark"):setup()
   end,
