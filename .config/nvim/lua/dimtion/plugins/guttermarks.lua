@@ -4,7 +4,7 @@ return {
   dev = true,
   event = { "BufReadPost", "BufNewFile", "BufWritePre" },
   config = {
-    -- special_mark = { enabled = true },
+    special_mark = { enabled = true },
   },
   keys = {
     {

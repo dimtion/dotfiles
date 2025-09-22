@@ -38,7 +38,7 @@ return {
         desc = "live grep lsp workspace symbols (fzf)",
       },
       {
-        "//",
+        "**",
         function()
           require("fzf-lua").grep_visual()
         end,
