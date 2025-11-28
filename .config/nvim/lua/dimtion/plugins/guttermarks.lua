@@ -2,9 +2,14 @@ return {
   "dimtion/guttermarks.nvim",
   -- enabled = false,
   dev = true,
-  event = { "BufReadPost", "BufNewFile", "BufWritePre" },
+  event = { "BufReadPost", "BufNewFile", "BufWritePre", "FileType" },
   config = {
-    special_mark = { enabled = true },
+    special_mark = { enabled = false },
+    global_mark = { enabled = true },
+    local_mark = { enabled = true },
+  },
+  cmd = {
+      "GutterMarks",
   },
   keys = {
     {
@@ -19,7 +24,6 @@ return {
       function()
         require("guttermarks.actions").marks_to_quickfix()
         vim.cmd "FzfLua quickfix"
-        -- vim.cmd("copen")
       end,
       desc = "delete mark on current line",
     },
