@@ -28,4 +28,20 @@ require("lazy").setup {
   dev = {
     path = "~/src/",
   },
+  rocks = {
+    enabled = false,
+  },
+  performance = {
+        rtp = {
+            disabled_plugins = {
+                'gzip',
+                'netrwPlugin',
+                'rplugin',
+                'tarPlugin',
+                'tohtml',
+                'tutor',
+                'zipPlugin',
+            },
+        },
+    },
 }

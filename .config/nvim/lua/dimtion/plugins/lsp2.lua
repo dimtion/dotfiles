@@ -93,10 +93,6 @@ return {
     opts = {},
   },
   {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {},
-  },
-  {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
     cmd = "LazyDev",
